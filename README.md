@@ -1,6 +1,12 @@
 # Framboyan
 
-Simple Java test framework.
+Framboyan is a simple Java test framework inspired in `jasmine` or `mocha` and focused in simplicity and developer experience.
+
+# Ideals
+
+- Writing and running tests should be simple and straightforward.
+- Debugging messages should be clear and descriptive.
+- The framework dependencies should tend to zero.
 
 # Example
 
@@ -25,7 +31,7 @@ public class ExampleTest extends Framboyan {{
 
 		it("This is a pending spec");
 
-		it("This is an spec WITH output (fails)", (out) -> {
+		it("This is a spec WITH output (fails)", (out) -> {
 			int test = 0;
 
 			for (int i = 0; i < 5; i++) {
