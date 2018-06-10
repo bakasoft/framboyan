@@ -3,13 +3,14 @@ package org.bakasoft.framboyan;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 public class Spec {
 
+	private static final String DEFAULT_CHARSET = "UTF-8";
+	
 	private final String name;
 	private final Action action;
 
@@ -49,14 +50,12 @@ public class Spec {
 	}
 	
 	private static String printer(Consumer<PrintStream> action) {
-		Charset charset = Charset.defaultCharset();
-		
 		try(ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
-			try(PrintStream printStream = new PrintStream(buffer, true, charset)) {
+			try(PrintStream printStream = new PrintStream(buffer, true, DEFAULT_CHARSET)) {
 				action.accept(printStream);	
 			}
 
-			return buffer.toString(charset);
+			return buffer.toString(DEFAULT_CHARSET);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
