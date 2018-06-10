@@ -107,3 +107,41 @@ org.bakasoft.framboyan.errors.ExpectedEqual: 5 expected to be 10.
 FAILED
 4 test(s), 2 passed, 1 pending, 1 failed ⚠️
 ```
+
+# Using it
+
+To use this framework using [JitPack](https://jitpack.io/), add following lines to your `build.gradle` file.
+
+```
+repositories {
+	...
+	maven { url 'https://jitpack.io' }
+}
+
+...
+
+dependencies {
+	...
+	implementation 'com.github.bakasoft:framboyan:v1.0'
+}
+```
+
+# Build
+
+Starting from the repository root, go to the project directory:
+
+```sh
+cd ./org.bakasoft.framboyan
+```
+
+Build library:
+
+```sh
+./gradlew build
+```
+
+Generate JAR in `./build/libs/framboyan-v0.1.jar`:
+
+```sh
+./gradlew jar
+```
