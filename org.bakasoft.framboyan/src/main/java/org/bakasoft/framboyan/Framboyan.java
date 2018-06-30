@@ -52,16 +52,24 @@ public class Framboyan {
 		}
 	}
 	
-	public static void it(String name) {
-		addSpec(new Spec(name, null));
-	}
-	
 	public static void it(String name, MutedAction action) {
 		addSpec(new Spec(name, action));
 	}
 	
 	public static void it(String name, Action action) {
 		addSpec(new Spec(name, action));
+	}
+	
+	public static void xit(String name) {
+		addSpec(new Spec(name, null));
+	}
+	
+	public static void xit(String name, MutedAction action) {
+		addSpec(new Spec(name, null));
+	}
+	
+	public static void xit(String name, Action action) {
+		addSpec(new Spec(name, null));
 	}
 	
 	public static PositiveExpect expect(MutedAction action) {
