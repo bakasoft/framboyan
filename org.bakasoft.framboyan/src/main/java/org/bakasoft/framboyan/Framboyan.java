@@ -18,12 +18,15 @@ import org.bakasoft.framboyan.templates.Template5Action;
 
 public class Framboyan {
 	
+	protected static final Console console;
+	
 	private static final ArrayList<Suite> suites;
 	
 	private static Suite currentSuite;
 	
 	static {
 		suites = new ArrayList<>();
+		console = new Console();
 	}
 	
 	private static void addSpec(Spec spec) {
@@ -52,10 +55,6 @@ public class Framboyan {
 		}
 	}
 	
-	public static void it(String name, MutedAction action) {
-		addSpec(new Spec(name, action));
-	}
-	
 	public static void it(String name, Action action) {
 		addSpec(new Spec(name, action));
 	}
@@ -64,15 +63,11 @@ public class Framboyan {
 		addSpec(new Spec(name, null));
 	}
 	
-	public static void xit(String name, MutedAction action) {
-		addSpec(new Spec(name, null));
-	}
-	
 	public static void xit(String name, Action action) {
 		addSpec(new Spec(name, null));
 	}
 	
-	public static PositiveExpect expect(MutedAction action) {
+	public static PositiveExpect expect(Action action) {
 		return new PositiveExpect(action);
 	}
 	

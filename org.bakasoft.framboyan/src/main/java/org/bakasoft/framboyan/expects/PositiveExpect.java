@@ -2,7 +2,7 @@ package org.bakasoft.framboyan.expects;
 
 import java.util.Objects;
 
-import org.bakasoft.framboyan.MutedAction;
+import org.bakasoft.framboyan.Action;
 import org.bakasoft.framboyan.errors.ExpectedEqual;
 import org.bakasoft.framboyan.errors.ExpectedInstance;
 import org.bakasoft.framboyan.errors.ExpectedNull;
@@ -38,7 +38,7 @@ public class PositiveExpect implements Expect {
 
 	@Override
 	public void toThrow(Class<? extends Throwable> errorType) {
-		MutedAction action = Expect.toMutedAction(actual);
+		Action action = Expect.toAction(actual);
 		
 		try {
 			action.run();

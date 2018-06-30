@@ -1,29 +1,41 @@
 package org.bakasoft.framboyan.test;
 
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-
 import org.bakasoft.framboyan.Framboyan;
 
 public class ExampleTest extends Framboyan {{
 
-	describe("Pattern.compile() method", () -> {
-		it("should compile valid expressions", () -> {
-			Pattern.compile("x+y?z*");
-			Pattern.compile("(.){1,3}x(a|b|c)");
+	describe("This is a test suite", () -> {
+		it("This is a simple spec", () -> {
+			int count = 0;
+
+			for (int i = 0; i < 10; i++) {
+				console.log("Index: %s", i);
+				count++;
+			}
+
+			expect(count).toBe(10);
 		});
 		
-		it("should generate an error with invalid expressions", () -> {
-			template((String expression) -> {
-				expect(() -> {
-					Pattern.compile(expression);
-				}).toThrow(PatternSyntaxException.class);
+		it("This spec has a template (and fails)", () -> {
+			template((Integer dividend, Integer divisor, Integer result) -> {
+				console.log("Testing: ", dividend, " / ", divisor, " = ", result);
+				expect(dividend / divisor).toBe(result);
 			})
-			.test("abc)")
-			.test("[test\\]");
+			.test(10, 5, 2)
+			.test(8, 4, 2)
+			.test(6, 3, 2)
+			.test(4, 0, null);
+		});
+	});
+	
+	describe("This is another test suite", () -> {
+		it("This spec checks for an error", () -> {
+			expect(() -> {
+				Math.floorMod(10, 0);
+			}).toThrow(ArithmeticException.class);
 		});
 		
-		xit("should compile expressions with flags", () -> {
+		xit("This is a pending spec so is not executed", () -> {
 			// TODO: complete this test
 		});
 	});

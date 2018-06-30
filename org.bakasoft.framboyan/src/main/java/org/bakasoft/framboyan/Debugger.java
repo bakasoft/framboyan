@@ -2,7 +2,7 @@ package org.bakasoft.framboyan;
 
 public class Debugger {
 
-	public static final int DEFAULT_MAX_LENGTH = 25;
+	public static final int DEFAULT_MAX_LENGTH = 1000;
 	
 	public static String inspect(Object value) {
 		return inspect(value, DEFAULT_MAX_LENGTH);

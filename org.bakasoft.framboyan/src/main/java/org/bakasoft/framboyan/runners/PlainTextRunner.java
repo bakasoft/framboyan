@@ -46,20 +46,21 @@ public class PlainTextRunner extends Runner {
 		} else if (result.isPending()) {
 			out.println("  ⚠️ " + specName);
 		} else {
-			Throwable error = result.getError();
-			String output = result.getOutput();
-			
 			out.println();
 			out.println("  ❌ " + specName);
-			
+		
+			String output = result.getOutput();
 			if (output != null && !output.isEmpty()) {
-				out.println(output);
 				out.println();
+				out.println(output.trim());
 			}
-			
+
+			Throwable error = result.getError();
 			if (error != null) {
+				out.println();
 				error.printStackTrace(out);
 			}
+			out.println();
 		}
 	}
 
@@ -81,5 +82,4 @@ public class PlainTextRunner extends Runner {
 			out.println((totalPassed + totalFailed + totalPending) + " test(s), " + totalPassed + " passed, " + totalPending + " pending, " + totalFailed + " failed ⚠️");
 		}
 	}
-
 }
