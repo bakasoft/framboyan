@@ -13,43 +13,67 @@ Framboyan is a simple Java test framework inspired in `jasmine` or `mocha` and f
 **ExampleTest.java**
 
 ```java
+package org.bakasoft.framboyan.test;
+
+import java.net.URI;
+import java.net.URL;
+
 import org.bakasoft.framboyan.Framboyan;
 
 public class ExampleTest extends Framboyan {{
 
-	describe("This is a test suite", () -> {
-		it("This is a simple spec", () -> {
-			int count = 0;
-
-			for (int i = 0; i < 10; i++) {
-				console.log("Index: %s", i);
-				count++;
-			}
-
-			expect(count).toBe(10);
+	describe(URI.class, () -> {
+		describe("`create(String)` method", () -> {
+			it("should pass with valid URIs", () -> {
+				URI.create("http://www.github.com/bakasoft");
+			});
+			it("should throw an error with invalid URIs", () -> {
+				expect(() -> {
+					URI.create("file://");
+				}).toThrow(IllegalArgumentException.class);
+			});
 		});
 		
-		it("This spec has a template (and fails)", () -> {
-			template((Integer dividend, Integer divisor, Integer result) -> {
-				console.log("Testing: ", dividend, " / ", divisor, " = ", result);
-				expect(dividend / divisor).toBe(result);
+		describe("`toASCIIString()` method", () -> {
+			xit("should return the URI as a US-ASCII string"); // TODO: add spec
+		});
+		
+		it("should resolve URIs", () -> { // TODO: fix this test
+			template((String absolute, String relative, String result) -> {
+				console.log("Resolving '%s' using '%s'...", relative, absolute);
+				
+				URI uri = URI.create(absolute);
+				
+				expect(uri.resolve(relative).toString()).toBe(result);
 			})
-			.test(10, 5, 2)
-			.test(8, 4, 2)
-			.test(6, 3, 2)
-			.test(4, 0, null);
+			//     Absolute                Relative   Result
+			.test("file://Users"         , "."      , "file://Users")
+			.test("file://Users/bakasoft", "folder" , "file://Users/bakasoft/folder")
+			;
+		});
+		
+		it("should identify the main components", () -> {
+			template((String input, String scheme, String authority, String path) -> {
+				console.log("Creating URI: ", input);
+				
+				URI uri = URI.create(input);
+				
+				expect(uri.getScheme()).toBe(scheme);
+				expect(uri.getAuthority()).toBe(authority);
+				expect(uri.getPath()).toBe(path);
+			})
+			//     URI                                  Scheme   Authority             Path
+			.test("http://github.com/bakasoft"        , "http" , "github.com"        , "/bakasoft")
+			.test("https://bakasoft.github.io/gramat/", "https", "bakasoft.github.io", "/gramat/")
+			;
 		});
 	});
 	
-	describe("This is another test suite", () -> {
-		it("This spec checks for an error", () -> {
-			expect(() -> {
-				Math.floorMod(10, 0);
-			}).toThrow(ArithmeticException.class);
-		});
-		
-		xit("This is a pending spec so is not executed", () -> {
-			// TODO: complete this test
+	xdescribe(URL.class, () -> { // TODO: fix URL tests
+		describe("(String) constructor", () -> {
+			it("should pass with valid URLs", () -> {
+				new URL("");
+			});
 		});
 	});
 	
@@ -64,7 +88,6 @@ import org.bakasoft.framboyan.Framboyan;
 public class Main {
 
 	public static void main(String[] args) {
-		Framboyan.add(ExampleTest.class);
 		Framboyan.run();
 	}
 
