@@ -3,7 +3,7 @@ package org.bakasoft.framboyan.runners;
 import java.io.PrintStream;
 
 import org.bakasoft.framboyan.Spec;
-import org.bakasoft.framboyan.Suite;
+import org.bakasoft.framboyan.util.Toolbox;
 import org.bakasoft.framboyan.Result;
 import org.bakasoft.framboyan.Runner;
 
@@ -11,7 +11,7 @@ public class PlainTextRunner extends Runner {
 
 	private final PrintStream out;
 
-	private String lastSuiteName;
+	private String lastGroupSubject;
 	
 	public PlainTextRunner() {
 		this(System.out);
@@ -22,44 +22,42 @@ public class PlainTextRunner extends Runner {
 	}
 
 	@Override
-	protected void testStarted(Suite suite, Spec spec) {
-		String suiteName = suite.getName();
+	protected void testStarted(Spec spec) {
+		String groupSubject = Toolbox.joinSubjects(spec.getParent());
 		
-		if (suiteName == null || suiteName.isEmpty()) {
-			suiteName = "Unnamed suite";
-		}
-		
-		if (lastSuiteName == null || !suiteName.equals(lastSuiteName)) {
+		if (lastGroupSubject == null || !groupSubject.equals(lastGroupSubject)) {
 			out.println();
-			out.println("⚙️ " + suiteName + "...");
+			out.println("⚙️ " + groupSubject);
 		}
 		
-		lastSuiteName = suiteName;
+		lastGroupSubject = groupSubject;
 	}
 
 	@Override
-	protected void testCompleted(Suite suite, Spec spec, Result result) {
-		String specName = spec.getName();
+	protected void testCompleted(Spec spec, Result result) {
+		String specSubject = String.valueOf(spec.getSubject());
 		
 		if (result.isSuccessful()) {
-			out.println("  ✅ " + specName);
+			out.println("  ✅ " + specSubject);
 		} else if (result.isPending()) {
-			out.println("  ⚠️ " + specName);
+			out.println("  ⚠️ " + specSubject);
 		} else {
-			out.println();
-			out.println("  ❌ " + specName);
+			out.println("  ❌ " + specSubject);
 		
 			String output = result.getOutput();
 			if (output != null && !output.isEmpty()) {
 				out.println();
-				out.println(output.trim());
+				out.println(Toolbox.trimEnd(output));
 			}
 
 			Throwable error = result.getError();
 			if (error != null) {
+				String stackTrace = Toolbox.getStackTrace(error);
+				
 				out.println();
-				error.printStackTrace(out);
+				out.println(Toolbox.trimEnd(stackTrace));
 			}
+			
 			out.println();
 		}
 	}
