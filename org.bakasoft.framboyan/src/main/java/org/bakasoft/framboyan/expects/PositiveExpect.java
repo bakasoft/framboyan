@@ -48,8 +48,12 @@ public class PositiveExpect implements Expect {
 			} else {
 				throw new ExpectedThrow();
 			}
-		} catch (Throwable e) {
-			if (errorType != null && !errorType.isInstance(e)) {
+		} 
+		catch (Throwable e) {
+			if (e instanceof ExpectedThrow) {
+				throw (ExpectedThrow)e;
+			}
+			else if (errorType != null && !errorType.isInstance(e)) {
 				throw new ExpectedThrow(errorType, e);	
 			}
 		}
