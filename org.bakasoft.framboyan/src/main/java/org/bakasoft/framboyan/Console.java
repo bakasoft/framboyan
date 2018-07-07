@@ -21,6 +21,7 @@ public class Console {
 						String message = String.format(format, Arrays.copyOfRange(args, 1, args.length));	
 						
 						output.append(message);
+						output.append(System.lineSeparator());
 						return;
 					}
 					catch (IllegalFormatException e) {
