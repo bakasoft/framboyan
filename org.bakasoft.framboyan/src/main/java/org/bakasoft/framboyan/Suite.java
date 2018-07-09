@@ -3,6 +3,8 @@ package org.bakasoft.framboyan;
 import java.util.Stack;
 
 import org.bakasoft.framboyan.expects.PositiveExpect;
+import org.bakasoft.framboyan.templaters.Templater2x2;
+import org.bakasoft.framboyan.templaters.Templater2x2Builder;
 import org.bakasoft.framboyan.templates.Template1;
 import org.bakasoft.framboyan.templates.Template1Action;
 import org.bakasoft.framboyan.templates.Template2;
@@ -106,6 +108,12 @@ public class Suite {
 	
 	public <T1, T2, T3, T4, T5> Template5<T1, T2, T3, T4, T5> template(Template5Action<T1, T2, T3, T4, T5> action) {
 		return new Template5<>(action);
+	}
+	
+	// Templaters
+	
+	public <T1, T2, U1, U2> Templater2x2<T1, T2, U1, U2> templater(Templater2x2Builder<T1, T2, U1, U2> builder) {
+		return new Templater2x2<>(builder);
 	}
 	
 	// helper functions
