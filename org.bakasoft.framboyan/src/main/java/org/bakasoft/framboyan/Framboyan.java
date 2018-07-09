@@ -22,7 +22,15 @@ public class Framboyan extends Suite {
 		super(_console, _root);
 	}
 	
-	private static void loadTests() {
+	public static Console getGlobalConsole() {
+		return _console;
+	}
+	
+	public static boolean run() {
+		return run(new PlainTextRunner());
+	}
+	
+	public static boolean run(Runner runner) {
 		if (autoloadTests) {
 			for (Class<? extends Framboyan> type : Reflection.findSubclasses(Framboyan.class)) {
 				System.out.println("Evaluating " + type + "...");
@@ -36,14 +44,7 @@ public class Framboyan extends Suite {
 			
 			autoloadTests = false;	
 		}
-	}
-	
-	public static boolean run() {
-		return run(new PlainTextRunner());
-	}
-	
-	public static boolean run(Runner runner) {
-		loadTests();
+		
 		return runner.run(_root);
 	}
 	

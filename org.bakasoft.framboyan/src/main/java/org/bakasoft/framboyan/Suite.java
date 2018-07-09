@@ -18,25 +18,35 @@ public class Suite {
 
 	protected final Console console;
 	
-	private final Stack<Group> stack;
+	private final Group _rootGroup;
+	private final Stack<Group> _groupStack;
 	
 	public Suite(Console console, Group root) {
 		this.console = console;
-		this.stack = new Stack<>();
-		this.stack.push(root);
+		this._rootGroup = root;
+		this._groupStack = new Stack<>();
+		this._groupStack.push(root);
+	}
+	
+	public Group getRootGroup() {
+		return _rootGroup;
+	}
+	
+	public Console getConsole() {
+		return console;
 	}
 	
 	public void describe(Object subject, Runnable content, boolean pending) {
-		Group parent = stack.peek();
+		Group parent = _groupStack.peek();
 		
 		Group group = new Group(parent, subject, console, pending);
 
 		if (content != null) {
-			stack.push(group);
+			_groupStack.push(group);
 			
 			content.run();
 			
-			stack.pop();
+			_groupStack.pop();
 		}
 	}
 	
@@ -53,7 +63,7 @@ public class Suite {
 	}
 	
 	public void it(String name, Action action) {
-		Group parent = stack.peek();
+		Group parent = _groupStack.peek();
 		
 		new Spec(parent, name, action);
 	}

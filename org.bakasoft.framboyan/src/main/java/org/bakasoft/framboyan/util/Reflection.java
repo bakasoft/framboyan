@@ -78,18 +78,32 @@ public class Reflection {
 		ArrayList<T> list = new ArrayList<>();
 		
 		types.forEach(type -> {
-			try {
-				Constructor<? extends T> ctr = type.getConstructor();
-				
-				T obj = ctr.newInstance();
-				
-				list.add(obj);
-			} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-				throw new RuntimeException(e);
-			}
+			T obj = createDefaultInstance(type);
+			
+			list.add(obj);
 		});
 			
 		return list;
+	}
+
+	public static <T> T createDefaultInstance(Class<? extends T> type) {
+		try {
+			Constructor<? extends T> ctr = type.getConstructor();
+			
+			return ctr.newInstance();
+		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static <T> T createDefaultInstance(Class<?> type, Class<? extends T> superType) {
+		if(!superType.isAssignableFrom(type)) {
+			throw new RuntimeException("Not supported type: " + type);
+		}
+		
+		Class<? extends T> suiteClass = type.asSubclass(superType);
+		
+		return createDefaultInstance(suiteClass);
 	}
 	
 }

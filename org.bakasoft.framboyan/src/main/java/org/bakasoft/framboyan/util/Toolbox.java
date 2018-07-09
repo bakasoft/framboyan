@@ -1,8 +1,8 @@
 package org.bakasoft.framboyan.util;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +34,6 @@ public class Toolbox {
 			}
 			
 			result.append(subjects.get(i));
-		}
-		
-		// avoid empty subjects
-		if (result.length() == 0) {
-			result.append(String.valueOf(target));
 		}
 		
 		return result.toString();
@@ -91,15 +86,13 @@ public class Toolbox {
 	}
 
 	public static String getStackTrace(Throwable error) {
-		String encoding = "UTF-8";
-		
 		try(
-			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-			PrintStream printStream = new PrintStream(buffer, true, encoding);
+			StringWriter stringWriter = new StringWriter();
+	        PrintWriter writer = new PrintWriter(stringWriter);
 		) {
-			error.printStackTrace(printStream);
+			error.printStackTrace(writer);
 			
-			return new String(buffer.toByteArray(), encoding);	
+	        return stringWriter.toString();
 		}
 		catch(IOException e) {
 			throw new RuntimeException(e);
