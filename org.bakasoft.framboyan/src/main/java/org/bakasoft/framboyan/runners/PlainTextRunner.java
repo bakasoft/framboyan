@@ -2,12 +2,13 @@ package org.bakasoft.framboyan.runners;
 
 import java.io.PrintStream;
 
-import org.bakasoft.framboyan.Spec;
 import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.Node;
 import org.bakasoft.framboyan.Result;
 import org.bakasoft.framboyan.Runner;
+import org.bakasoft.framboyan.diff.DiffError;
 
-public class PlainTextRunner extends Runner {
+public class PlainTextRunner implements Runner {
 
 	private final PrintStream out;
 
@@ -22,27 +23,27 @@ public class PlainTextRunner extends Runner {
 	}
 
 	@Override
-	protected void testStarted(Spec spec) {
-		String groupSubject = Toolbox.joinSubjects(spec.getParent());
+	public void started(Node node) {
+		String groupSubject = node.hasParent() ? node.getParent().joinDescriptions() : "";
 		
 		if (lastGroupSubject == null || !groupSubject.equals(lastGroupSubject)) {
 			out.println();
-			out.println("⚙️ " + groupSubject);
+			out.println(groupSubject + " ⚙️");
 		}
 		
 		lastGroupSubject = groupSubject;
 	}
 
 	@Override
-	protected void testCompleted(Spec spec, Result result) {
-		String specSubject = String.valueOf(spec.getSubject());
+	public void completed(Node node, Result result) {
+		String specSubject = String.valueOf(node.getDescription());
 		
 		if (result.isSuccessful()) {
-			out.println("  ✅ " + specSubject);
+			out.println("  " + specSubject + " ✅");
 		} else if (result.isPending()) {
-			out.println("  ⚠️ " + specSubject);
+			out.println("  " + specSubject + " ⚠️");
 		} else {
-			out.println("  ❌ " + specSubject);
+			out.println("  " + specSubject + " ❌");
 		
 			String output = result.getOutput();
 			if (output != null && !output.isEmpty()) {
@@ -52,6 +53,15 @@ public class PlainTextRunner extends Runner {
 
 			Throwable error = result.getError();
 			if (error != null) {
+				if (error instanceof DiffError) {
+					DiffError diff = (DiffError)error;
+					
+					if (diff.getDifference() != null && !diff.getDifference().isEmpty()) {
+						out.println();
+						out.println(Toolbox.trimEnd(diff.getDifference()));	
+					}
+				}
+				
 				String stackTrace = Toolbox.getStackTrace(error);
 				
 				out.println();
@@ -63,7 +73,7 @@ public class PlainTextRunner extends Runner {
 	}
 
 	@Override
-	protected void testSummary(boolean overallResult, int totalPassed, int totalPending, int totalFailed) {
+	public void summary(boolean overallResult, int totalPassed, int totalPending, int totalFailed) {
 		out.println();
 		
 		if (overallResult) {

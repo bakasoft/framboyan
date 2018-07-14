@@ -1,74 +1,66 @@
 package org.bakasoft.framboyan.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.lang.reflect.Modifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Reflection {
 
-	public static <T> List<Class<? extends T>> findSubclasses(Class<T> superClass) {
-		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+	public static List<String> findClassNames() {
+		ArrayList<String> classNames = new ArrayList<>();
+		String classpath = System.getProperty("java.class.path");
+		String[] classpathEntries = classpath.split(File.pathSeparator);
 		
-		return findSubclasses(superClass, classLoader);
+		for (String classpathEntry : classpathEntries) {
+			File file = new File(classpathEntry);
 			
-	}
-	
-	public static <T> List<T> createInstances(Class<T> superClass) {
-		return createInstances(findSubclasses(superClass));
-	}
-	
-	public static <T> List<T> createInstances(Class<T> superClass, ClassLoader classLoader) {
-		return createInstances(findSubclasses(superClass, classLoader));
+			if (file.isDirectory()) {
+				find_class_names(file.toPath(), classNames);
+			}
+		}
+		
+		return classNames;
 	}
 
-	public static <T> List<Class<? extends T>> findSubclasses(Class<T> superClass, ClassLoader classLoader) {
+	private static void find_class_names(Path rootDirectory, ArrayList<String> classNames) {
+		String rootStr = rootDirectory.toString().toLowerCase();
+		
+		try {
+			Files.walk(rootDirectory)
+				.filter(Files::isRegularFile)
+				.map(Path::toString)
+				.filter(path -> path.toLowerCase().endsWith(".class"))
+				.map(path -> path.substring(rootStr.length() + 1, path.length() - 6))
+				.map(path -> path.replace(File.separatorChar, '.'))
+				.forEach(className -> {
+					classNames.add(className);
+				});
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static <T> List<Class<? extends T>> findAssignableTo(Class<T> superClass) {
 		ArrayList<Class<? extends T>> list = new ArrayList<>();
 		
-		if (classLoader != null) {
-			URL url = classLoader.getResource(".");
-			
-			if (url != null) {
-				Path root;
+		for (String className : findClassNames()) {
+			try {
+				Class<?> klass = Class.forName(className);
 				
-				try {
-					root = Paths.get(url.toURI());
-				} catch (URISyntaxException e) {
-					throw new RuntimeException(e);
+				if (superClass.isAssignableFrom(klass)) {
+					list.add(klass.asSubclass(superClass));
 				}
-				
-				String rootStr = (root.toString() + "/").toLowerCase();
-				
-				try {
-					Files.walk(root)
-						.filter(Files::isRegularFile)
-						.map(Path::toString)
-						.filter(path -> path.toLowerCase().startsWith(rootStr))
-						.map(path -> path.substring(rootStr.length()))
-						.filter(path -> path.toLowerCase().endsWith(".class"))
-						.map(path -> path.substring(0, path.length() - 6))
-						.map(path -> path.replace('/', '.'))
-						.map(path -> {
-							try {
-								return classLoader.loadClass(path);
-							} catch (ClassNotFoundException e) {
-								throw new RuntimeException(e);
-							}
-						})
-						.filter(type -> superClass.isAssignableFrom(type))
-						.forEach(type -> {
-							list.add(type.asSubclass(superClass));
-						});
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}	
-			}	
+			} 
+			catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			}
 		}
 		
 		return list;
@@ -78,32 +70,64 @@ public class Reflection {
 		ArrayList<T> list = new ArrayList<>();
 		
 		types.forEach(type -> {
-			T obj = createDefaultInstance(type);
+			T obj = createInstance(type);
 			
 			list.add(obj);
 		});
 			
 		return list;
 	}
+	
+	public static boolean hasEmptyConstructor(Class<?> type) {
+		// TODO check for more cases
+		return !type.isInterface() 
+				&& !Modifier.isAbstract(type.getModifiers())
+				&& Arrays.stream(type.getConstructors()).anyMatch(ctr -> ctr.getParameterCount() == 0);
+	}
 
-	public static <T> T createDefaultInstance(Class<? extends T> type) {
+	public static <T> T createInstance(Class<? extends T> type) {
 		try {
 			Constructor<? extends T> ctr = type.getConstructor();
 			
 			return ctr.newInstance();
-		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+		} catch (NoSuchMethodException e) {
+			throw new RuntimeException(e); // TODO message "no empty constructor"
+		} catch (InstantiationException e) {
+			throw new RuntimeException(e); // TODO message "is interface, abstract or something like that"
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e); // TODO message "not accessible constructor"
+		} catch (InvocationTargetException e) {
+			throw new RuntimeException(e); // TODO message "an error inside the constructor"
+		} catch (SecurityException | IllegalArgumentException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static <T> T createDefaultInstance(Class<?> type, Class<? extends T> superType) {
+	public static <T> T createInstance(Class<?> type, Class<? extends T> superType) {
 		if(!superType.isAssignableFrom(type)) {
 			throw new RuntimeException("Not supported type: " + type);
 		}
 		
 		Class<? extends T> suiteClass = type.asSubclass(superType);
 		
-		return createDefaultInstance(suiteClass);
+		return createInstance(suiteClass);
+	}
+
+	public static Class<?> getCallerClass() {
+		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+
+		if (elements.length >= 4) {
+			String className = elements[3].getClassName();
+			
+			try {
+				return Class.forName(className);
+			} 
+			catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		return null;
 	}
 	
 }

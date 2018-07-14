@@ -1,6 +1,8 @@
 package org.bakasoft.framboyan.junit;
 
-public class TestSuite1 extends FramboyanJUnit {{
+import org.bakasoft.framboyan.Framboyan;
+
+public class TestSuite1 extends Framboyan {{
 
 	describe("Describe 1", () -> {
 

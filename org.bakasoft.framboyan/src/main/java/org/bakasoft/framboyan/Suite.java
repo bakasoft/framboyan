@@ -1,8 +1,10 @@
 package org.bakasoft.framboyan;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-import org.bakasoft.framboyan.expects.PositiveExpect;
+import org.bakasoft.framboyan.expect.Expect;
 import org.bakasoft.framboyan.templaters.Templater2x2;
 import org.bakasoft.framboyan.templaters.Templater2x2Builder;
 import org.bakasoft.framboyan.templates.Template1;
@@ -16,32 +18,71 @@ import org.bakasoft.framboyan.templates.Template4Action;
 import org.bakasoft.framboyan.templates.Template5;
 import org.bakasoft.framboyan.templates.Template5Action;
 
-public class Suite {
+public class Suite implements Target {
 
 	protected final Console console;
 	
-	private final Group _rootGroup;
+	private final ArrayList<Target> _targets;
+	
 	private final Stack<Group> _groupStack;
 	
-	public Suite(Console console, Group root) {
+	public Suite(Console console) {
 		this.console = console;
-		this._rootGroup = root;
 		this._groupStack = new Stack<>();
-		this._groupStack.push(root);
-	}
-	
-	public Group getRootGroup() {
-		return _rootGroup;
+		this._targets = new ArrayList<>();
 	}
 	
 	public Console getConsole() {
 		return console;
 	}
 	
-	public void describe(Object subject, Runnable content, boolean pending) {
-		Group parent = _groupStack.peek();
+	// target methods
+	
+	@Override
+	public Object getDescription() {
+		return Target.getDescriptionFromClass(getClass(), null);
+	}
+
+	@Override
+	public boolean isPending() {
+		return Target.getPendingFromClass(getClass(), false);
+	}
+
+	@Override
+	public boolean isFocused() {
+		return Target.getFocusedFromClass(getClass(), false);
+	}
+	
+	@Override
+	public boolean isRoot() {
+		// only subclasses are allowed to be root
+		return getClass() != Suite.class;
+	}
+	
+	@Override
+	public List<Target> getTargets() {
+		return _targets;
+	}
+	
+	@Override
+	public Node buildInto(Node parent) {
+		Node node = new Node(parent, this, getDescription(), null, isPending(), isFocused(), console);
 		
-		Group group = new Group(parent, subject, console, pending);
+		for (Target target : getTargets()) {
+			Node subnode = target.buildInto(node);
+			
+			node.addNode(subnode);
+		}
+		
+		return node;
+	}
+	
+	/* framework */
+	
+	public Group describe(Object description, Runnable content, Mode mode) {
+		Group parent = _groupStack.isEmpty() ? null : _groupStack.peek();
+		
+		Group group = new Group(description, mode);
 
 		if (content != null) {
 			_groupStack.push(group);
@@ -50,42 +91,72 @@ public class Suite {
 			
 			_groupStack.pop();
 		}
-	}
-	
-	public void describe(Object subject, Runnable content) {
-		describe(subject, content, false);
-	}
-	
-	public void xdescribe(Object subject, Runnable content) {
-		describe(subject, content, true);
-	}
-	
-	public void xdescribe(Object subject) {
-		describe(subject, null, true);
-	}
-	
-	public void it(String name, Action action) {
-		Group parent = _groupStack.peek();
 		
-		new Spec(parent, name, action);
+		if (parent != null) {
+			parent.addTarget(group);
+		}
+		else {
+			_targets.add(group);
+		}
+		
+		return group;
 	}
 	
-	public void xit(String name) {
-		it(name, null);
+	public Group describe(Object description, Runnable content) {
+		return describe(description, content, Mode.NORMAL);
 	}
 	
-	public void xit(String name, Action action) {
-		it(name, null);
+	public Group fdescribe(Object description, Runnable content) {
+		return describe(description, content, Mode.FOCUSED);
+	}
+	
+	public Group xdescribe(Object description, Runnable content) {
+		return describe(description, content, Mode.PENDING);
+	}
+	
+	public Group xdescribe(Object description) {
+		return describe(description, null, Mode.PENDING);
+	}
+	
+	public Spec it(Object description, Action action, Mode mode) {
+		Group parent = _groupStack.isEmpty() ? null : _groupStack.peek();
+		
+		Spec spec = new Spec(description, action, mode);
+		
+		if (parent != null) {
+			parent.addTarget(spec);
+		}
+		else {
+			_targets.add(spec);
+		}
+		
+		return spec;
+	}
+	
+	public Spec it(Object description, Action action) {
+		return it(description, action, Mode.NORMAL);
+	}
+	
+	public Spec fit(Object description, Action action) {
+		return it(description, action, Mode.FOCUSED);
+	}
+	
+	public Spec xit(Object description) {
+		return it(description, null, Mode.PENDING);
+	}
+	
+	public Spec xit(Object description, Action action) {
+		return it(description, null, Mode.PENDING);
 	}
 	
 	// expect functions
 	
-	public PositiveExpect expect(Action action) {
-		return new PositiveExpect(action);
+	public Expect expect(Action action) {
+		return new Expect(action);
 	}
 	
-	public PositiveExpect expect(Object value) {
-		return new PositiveExpect(value);
+	public Expect expect(Object value) {
+		return new Expect(value);
 	}
 	
 	// Templates 1, 2, 3, 4 and 5

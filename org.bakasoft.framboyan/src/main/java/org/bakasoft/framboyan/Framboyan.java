@@ -1,51 +1,9 @@
 package org.bakasoft.framboyan;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.bakasoft.framboyan.runners.PlainTextRunner;
-import org.bakasoft.framboyan.util.Reflection;
-
-public class Framboyan extends Suite {
-	
-	private static final Group _root;
-	private static final Console _console;
-	
-	private static boolean autoloadTests;
-	
-	static {
-		autoloadTests = true;
-		_console = new Console();
-		_root = new Group(null, null, _console, false);
-	}
+abstract public class Framboyan extends Suite {
 	
 	public Framboyan() {
-		super(_console, _root);
-	}
-	
-	public static Console getGlobalConsole() {
-		return _console;
-	}
-	
-	public static boolean run() {
-		return run(new PlainTextRunner());
-	}
-	
-	public static boolean run(Runner runner) {
-		if (autoloadTests) {
-			for (Class<? extends Framboyan> type : Reflection.findSubclasses(Framboyan.class)) {
-				System.out.println("Evaluating " + type + "...");
-				
-				try {
-					type.getConstructor().newInstance();
-				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-					throw new RuntimeException(e);
-				}
-			}
-			
-			autoloadTests = false;	
-		}
-		
-		return runner.run(_root);
+		super(new Console());
 	}
 	
 }

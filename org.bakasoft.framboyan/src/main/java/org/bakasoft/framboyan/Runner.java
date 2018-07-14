@@ -1,28 +1,69 @@
 package org.bakasoft.framboyan;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Reflection;
 
-abstract public class Runner {
+public interface Runner {
 
-	abstract protected void testStarted(Spec spec);
-	abstract protected void testCompleted(Spec spec, Result result);
-	abstract protected void testSummary(boolean overallResult, int totalPassed, int totalPending, int totalFailed);
+	void started(Node spec);
+	void completed(Node spec, Result result);
+	void summary(boolean overallResult, int totalPassed, int totalPending, int totalFailed);
 	
-	public boolean run(Target target) {
+	default boolean run(Class<?>... types) {
+		ArrayList<Target> targets = new ArrayList<>();
+		
+		for (Class<?> type : types) {
+			if (Target.class.isAssignableFrom(type)) {
+				if (Reflection.hasEmptyConstructor(type)) {
+					Target target = Reflection.createInstance(type, Target.class);
+					
+					targets.add(target);
+				}
+				else {
+					throw new RuntimeException();	
+				}
+			}
+			else {
+				throw new RuntimeException();
+			}
+		}
+		
+		return run(targets);
+	}
+	
+	default boolean run(Target target) {
+		Node node = target.buildInto(null);
+		
+		return run(node);
+	}
+	
+	default boolean run(List<Target> targets) {
+		Node root = new Node();
+		
+		for (Target target : targets) {
+			Node node = target.buildInto(root);
+			
+			root.addNode(node);
+		}
+		
+		return run(root);
+	}
+	
+	default boolean run(Node root) {
+		List<Node> specs = root.findNodes(node -> node.getAction() != null);
+		boolean onlyFocused = root.containFocus();
 		int totalPassed = 0;
 		int totalFailed = 0;
 		int totalPending = 0;
 		
-		List<Spec> specs = Toolbox.listSpecs(target);
-		
-		for (Spec spec : specs) {
-			testStarted(spec);
+		for (Node spec : specs) {
+			started(spec);
 			
-			Result result = spec.execute();
+			Result result = spec.run(onlyFocused);
 			
-			testCompleted(spec, result);
+			completed(spec, result);
 			
 			if (result.isSuccessful()) {
 				totalPassed++;
@@ -35,7 +76,7 @@ abstract public class Runner {
 		
 		boolean overallResult = (totalPassed > 0 && totalFailed == 0);
 		
-		testSummary(overallResult, totalPassed, totalPending, totalFailed);
+		summary(overallResult, totalPassed, totalPending, totalFailed);
 		
 		return overallResult;
 	}

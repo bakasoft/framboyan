@@ -14,3 +14,8 @@ jar {
                    'Implementation-Version': project.version)
     }
 }
+
+task test(type: JavaExec, description: 'Runs the unit tests.', overwrite:true) {
+	classpath sourceSets.test.runtimeClasspath
+	main = "org.bakasoft.framboyan.RunTests"
+}
