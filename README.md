@@ -1,8 +1,6 @@
 # Framboyan
 
-Framboyan is a simple Java test framework inspired in `jasmine` or `mocha` and focused in simplicity and developer experience.
-
-# Ideals
+Framboyan is a test framework for Java inspired in `jasmine`, `mocha` or `rspec` and focused in simplicity, developer experience and following ideals:
 
 - Writing and running tests should be simple and straightforward.
 - Debugging messages should be clear and descriptive.
