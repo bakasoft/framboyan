@@ -1,8 +1,11 @@
 package org.bakasoft.framboyan.runners;
 
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Strings;
 import org.bakasoft.framboyan.Node;
 import org.bakasoft.framboyan.Result;
 import org.bakasoft.framboyan.Runner;
@@ -48,7 +51,7 @@ public class PlainTextRunner implements Runner {
 			String output = result.getOutput();
 			if (output != null && !output.isEmpty()) {
 				out.println();
-				out.println(Toolbox.trimEnd(output));
+				out.println(Strings.trimEnd(output)); // TODO: trim instead the first and last empty lines
 			}
 
 			Throwable error = result.getError();
@@ -58,14 +61,14 @@ public class PlainTextRunner implements Runner {
 					
 					if (diff.getDifference() != null && !diff.getDifference().isEmpty()) {
 						out.println();
-						out.println(Toolbox.trimEnd(diff.getDifference()));	
+						out.println(Strings.trimEnd(diff.getDifference()));	
 					}
 				}
 				
-				String stackTrace = Toolbox.getStackTrace(error);
+				String stackTrace = getStackTrace(error);
 				
 				out.println();
-				out.println(Toolbox.trimEnd(stackTrace));
+				out.println(Strings.trimEnd(stackTrace));
 			}
 			
 			out.println();
@@ -88,6 +91,20 @@ public class PlainTextRunner implements Runner {
 			out.println(totalFailed + " test(s), all failed ☠️");
 		} else {
 			out.println((totalPassed + totalFailed + totalPending) + " test(s), " + totalPassed + " passed, " + totalPending + " pending, " + totalFailed + " failed ⚠️");
+		}
+	}
+	
+	public static String getStackTrace(Throwable error) {
+		try(
+			StringWriter stringWriter = new StringWriter();
+	        PrintWriter writer = new PrintWriter(stringWriter);
+		) {
+			error.printStackTrace(writer);
+			
+	        return stringWriter.toString();
+		}
+		catch(IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }

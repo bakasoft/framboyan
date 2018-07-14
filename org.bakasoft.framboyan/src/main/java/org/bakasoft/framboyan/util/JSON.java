@@ -4,7 +4,9 @@ import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
@@ -18,9 +20,17 @@ public class JSON {
 	public static String stringify(Object value) {
 		Object normalized = Normalizer.normalize(value);
 		
-		return Toolbox.bufferedPrinting(out -> {
-			print_value(out, normalized, 0, new Stack<Object>());
-		});
+		try(
+			StringWriter stringWriter = new StringWriter();
+	        PrintWriter writer = new PrintWriter(stringWriter); // TODO: printwriter is an overkill
+		) {
+			print_value(writer, normalized, 0, new Stack<Object>());
+			
+	        return stringWriter.toString();
+		}
+		catch(IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private static void print_value(PrintWriter out, Object value, int indent, Stack<Object> stack) {	
@@ -36,6 +46,7 @@ public class JSON {
 		else if (value instanceof String) {
 			print_string(out, (String)value);
 		}
+		// TODO: add date & time
 		else if (value instanceof Class) {
 			print_string(out, ((Class<?>)value).getName());
 		}
@@ -44,6 +55,7 @@ public class JSON {
 		}
 		else {
 			stack.push(value);
+			
 			if (value instanceof List) {
 				print_list(out, (List<?>) value, indent, stack);
 			}
@@ -168,18 +180,22 @@ public class JSON {
 					Method method = property.getReadMethod();
 					
 					if (method != null && method.getParameterCount() == 0 && method.getReturnType() != Void.class) {
-						String key = property.getName();
-						Object value = method.invoke(obj);
-						
-						value = Normalizer.normalize(value);
-						
-						map.put(key, value);
+						try {
+							String key = property.getName();
+							Object value = method.invoke(obj);
+							
+							value = Normalizer.normalize(value);
+							
+							map.put(key, value);
+						} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+							// TODO: ignore property exception?
+						}
 					}
 				}
 			}
 			
-		} catch (IntrospectionException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			// ignore 
+		} catch (IntrospectionException e) {
+			// TODO: ignore bean exception?
 		}
 		
 		print_map(out, map, indent, stack);
@@ -189,7 +205,7 @@ public class JSON {
 		out.println();
 		
 		for (int i = 0; i < indent; i++) {
-			out.print("  ");
+			out.print("  "); // TODO: make it configurable
 		}
 	}
 

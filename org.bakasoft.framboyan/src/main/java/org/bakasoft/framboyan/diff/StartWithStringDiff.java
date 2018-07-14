@@ -1,6 +1,7 @@
 package org.bakasoft.framboyan.diff;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
+import org.bakasoft.framboyan.util.Strings;
 
 public class StartWithStringDiff extends AbstractDiff {
 
@@ -20,23 +21,23 @@ public class StartWithStringDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to end with %s.", 
-				Toolbox.inspect(text),
-				Toolbox.inspect(suffix));
+				Inspector.inspect(text),
+				Inspector.inspect(suffix));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s NOT to end with %s.", 
-				Toolbox.inspect(text),
-				Toolbox.inspect(suffix));
+				Inspector.inspect(text),
+				Inspector.inspect(suffix));
 	}
 
 	@Override
 	public String generateActualValue() {
-		String actualSuffix = Toolbox.lastPart(text, suffix.length());
+		String actualSuffix = Strings.lastPart(text, suffix.length());
 		
 		if (actualSuffix.length() < suffix.length()) {
-			return Toolbox.repeat(' ', suffix.length() - actualSuffix.length()) + suffix;
+			return Strings.repeat(' ', suffix.length() - actualSuffix.length()) + suffix;
 		}
 		
 		return suffix;

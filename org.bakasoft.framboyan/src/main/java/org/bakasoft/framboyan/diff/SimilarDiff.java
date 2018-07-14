@@ -1,8 +1,8 @@
 package org.bakasoft.framboyan.diff;
 
+import org.bakasoft.framboyan.util.Inspector;
 import org.bakasoft.framboyan.util.JSON;
 import org.bakasoft.framboyan.util.Normalizer;
-import org.bakasoft.framboyan.util.Toolbox;
 
 public class SimilarDiff extends AbstractDiff {
 
@@ -32,15 +32,15 @@ public class SimilarDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to be %s.", 
-				Toolbox.inspect(actual), 
-				Toolbox.inspect(expected));
+				Inspector.inspect(actual), 
+				Inspector.inspect(expected));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s to NOT be %s.", 
-				Toolbox.inspect(actual), 
-				Toolbox.inspect(expected));
+				Inspector.inspect(actual), 
+				Inspector.inspect(expected));
 	}
 	
 	@Override

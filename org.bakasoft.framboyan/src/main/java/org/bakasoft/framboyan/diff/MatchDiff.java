@@ -2,7 +2,8 @@ package org.bakasoft.framboyan.diff;
 
 import java.util.regex.Pattern;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
+import org.bakasoft.framboyan.util.Normalizer;
 
 public class MatchDiff extends AbstractDiff {
 
@@ -10,8 +11,8 @@ public class MatchDiff extends AbstractDiff {
 	private final Pattern pattern;
 	
 	public MatchDiff(Object actual, Object pattern) {
-		this.text = Toolbox.string(actual);
-		this.pattern = Toolbox.pattern(pattern);
+		this.text = Normalizer.toString(actual);
+		this.pattern = Normalizer.toPattern(pattern);
 	}
 
 	@Override
@@ -22,15 +23,15 @@ public class MatchDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to match %s.", 
-				Toolbox.inspect(text),
-				Toolbox.inspect(pattern));
+				Inspector.inspect(text),
+				Inspector.inspect(pattern));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s to match %s.", 
-				Toolbox.inspect(text),
-				Toolbox.inspect(pattern));
+				Inspector.inspect(text),
+				Inspector.inspect(pattern));
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package org.bakasoft.framboyan.diff;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 public class EqualDiff extends AbstractDiff {
 
@@ -27,25 +27,25 @@ public class EqualDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to equal to %s.", 
-				Toolbox.inspect(actual), 
-				Toolbox.inspect(expected));
+				Inspector.inspect(actual), 
+				Inspector.inspect(expected));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s to NOT equal to %s.", 
-				Toolbox.inspect(actual), 
-				Toolbox.inspect(expected));
+				Inspector.inspect(actual), 
+				Inspector.inspect(expected));
 	}
 	
 	@Override
 	public String generateActualValue() {
-		return Toolbox.hash(actual) + " : " + Toolbox.typeFull(actual);
+		return Inspector.hash(actual) + " : " + Inspector.typeFull(actual);
 	}
 
 	@Override
 	public String generateExpectedValue() {
-		return Toolbox.hash(expected) + " : " + Toolbox.typeFull(expected);
+		return Inspector.hash(expected) + " : " + Inspector.typeFull(expected);
 	}
 	
 }

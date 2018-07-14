@@ -17,63 +17,13 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import org.bakasoft.framboyan.Action;
 
 public class Normalizer {
-
-	private static class NormalizedList extends ArrayList<Object> {
-
-		private static final long serialVersionUID = 2843166128879835990L;
-		
-		public NormalizedList() {
-			// empty constructor
-		}
-		
-		public NormalizedList(Object[] items) {
-			for (Object item : items) {
-				add(item);
-			}
-		}
-		
-		@Override
-		public int hashCode() {
-			int hash = List.class.hashCode();
-			
-			for (Object item : this) {
-				hash ^= item.hashCode();
-			}
-			
-			return hash;
-		}
-		
-		@Override
-		public boolean equals(Object o) {
-			if (o instanceof List) {
-				List<?> list = (List<?>)o;
-				
-				if (list.size() == size()) {
-					for (int i = 0; i < size(); i++) {
-						if (!Objects.equals(get(i), list.get(i))) {
-							return false;
-						}
-					}
-					
-					return true;
-				}
-			}
-			
-			return false;
-		}
-	}
-	
-	private static void normalizeArray(Object[] items) {
-		for (int i = 0; i < items.length; i++) {
-			items[i] = normalize(items[i]);
-		}
-	}
 	
 	public static Object normalize(Object value) {
 		// Null
@@ -82,8 +32,46 @@ public class Normalizer {
 			return null;
 		}
 		
+		Object result;
+		
 		// Boolean
 		
+		result = toBoolean(value, null);
+		
+		if (result != null) {
+			return result;
+		}
+		
+		// Number
+		
+		result = toNumber(value, null);
+		
+		if (result != null) {
+			return result;
+		}
+		
+		// String
+		
+		result = toString(value, null);
+		
+		if (result != null) {
+			return result;
+		}
+		
+		// List
+		
+		result = toList(value, null);
+		
+		if (result != null) {
+			return result;
+		}
+		
+		// TODO: Map and other values
+		
+		return value;
+	}
+	
+	public static Boolean toBoolean(Object value, Boolean defaultValue) {
 		if (value instanceof Boolean) {
 			return (Boolean)value;
 		}
@@ -94,8 +82,10 @@ public class Normalizer {
 			return false;
 		}
 		
-		// Number
-		
+		return defaultValue;
+	}
+	
+	public static BigDecimal toNumber(Object value, BigDecimal defaultValue) {
 		if (value instanceof BigDecimal) {
 			return (BigDecimal)value;
 		}
@@ -147,8 +137,10 @@ public class Normalizer {
 			}
 		}
 		
-		// String
-		
+		return defaultValue;
+	}
+	
+	public static String toString(Object value, String defaultValue) {
 		if (value instanceof String) {
 			return (String)value;
 		}
@@ -162,30 +154,11 @@ public class Normalizer {
 			// StringBuilder, StringBuffer, etc...
 			return ((CharSequence)value).toString();
 		}	
-
-		// Action
 		
-		if (value instanceof Runnable) {
-			return (Action)(((Runnable)value)::run);
-		}
-		else if (value instanceof Supplier) {
-			return (Action)(() -> ((Supplier<?>)value).get());
-		}
-		else if (value instanceof Consumer) {
-			return (Action)(() -> ((Consumer<?>)value).accept(null));
-		}
-		else if (value instanceof Function) {
-			return (Action)(() -> ((Function<?, ?>)value).apply(null));
-		}
-		else if (value instanceof Predicate) {
-			return (Action)(() -> ((Predicate<?>)value).test(null));
-		}
-		else if (value instanceof Action) {
-			return (Action) value;
-		}
-		
-		// List
-		
+		return defaultValue;
+	}
+	
+	public static List<?> toList(Object value, List<?> defaultValue) {
 		if (value instanceof List) {
 			List<?> list = (List<?>)value;
 			Object[] items = list.toArray();
@@ -230,12 +203,113 @@ public class Normalizer {
 			return new NormalizedList(items);
 		}
 		
-		// Map
-		
-		// TODO
-		
-		// Other values
-		
-		return value;
+		return defaultValue;
 	}
+
+	public static Action toAction(Object value) {
+		if (value instanceof Runnable) {
+			return (Action)(((Runnable)value)::run);
+		}
+		else if (value instanceof Supplier) {
+			return (Action)(() -> ((Supplier<?>)value).get());
+		}
+		else if (value instanceof Consumer) {
+			return (Action)(() -> ((Consumer<?>)value).accept(null));
+		}
+		else if (value instanceof Function) {
+			return (Action)(() -> ((Function<?, ?>)value).apply(null));
+		}
+		else if (value instanceof Predicate) {
+			return (Action)(() -> ((Predicate<?>)value).test(null));
+		}
+		else if (value instanceof Action) {
+			return (Action) value;
+		}
+		else {
+			throw new RuntimeException();
+		}	
+	}
+
+	public static Pattern toPattern(Object value) {
+		if (value instanceof Pattern) {
+			return ((Pattern)value);
+		}
+		else if (value instanceof String) {
+			return (Pattern.compile((String)value));
+		}
+		
+		throw new RuntimeException("invalid pattern");
+	}
+
+	public static void normalizeArray(Object[] items) {
+		for (int i = 0; i < items.length; i++) {
+			items[i] = normalize(items[i]);
+		}
+	}
+	
+	public static BigDecimal toNumber(Object value) {
+		BigDecimal number = toNumber(value, null);
+	
+		if (number == null) {
+			throw new RuntimeException(); // TODO: message: cannot convert to number
+		}
+		
+		return number;
+	}
+	
+	public static String toString(Object value) {
+		String string = toString(value, null);
+		
+		if (string == null) {
+			throw new RuntimeException(); // TODO: message: cannot convert to string
+		}
+		
+		return string;
+	}
+	
+	// TODO: complete method overloads
+	
+	private static class NormalizedList extends ArrayList<Object> {
+
+		private static final long serialVersionUID = 2843166128879835990L;
+		
+		public NormalizedList(Object[] items) {
+			super(items.length);
+			
+			for (Object item : items) {
+				add(item);
+			}
+		}
+		
+		@Override
+		public int hashCode() {
+			int hash = List.class.hashCode();
+			
+			for (Object item : this) {
+				hash ^= item.hashCode();
+			}
+			
+			return hash;
+		}
+		
+		@Override
+		public boolean equals(Object o) {
+			if (o instanceof List) {
+				List<?> list = (List<?>)o;
+				
+				if (list.size() == size()) {
+					for (int i = 0; i < size(); i++) {
+						if (!Objects.equals(get(i), list.get(i))) {
+							return false;
+						}
+					}
+					
+					return true;
+				}
+			}
+			
+			return false;
+		}
+	}
+	
 }

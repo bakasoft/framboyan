@@ -2,7 +2,7 @@ package org.bakasoft.framboyan.diff;
 
 import java.util.Objects;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 public class InstanceOfDiff extends AbstractDiff {
 
@@ -28,14 +28,14 @@ public class InstanceOfDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to be an instance of %s.", 
-			Toolbox.inspect(value),
-			type);
+				Inspector.inspect(value),
+				type);
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s NOT to be an instance of %s.", 
-				Toolbox.inspect(value),
+				Inspector.inspect(value),
 				type);
 	}
 

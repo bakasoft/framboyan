@@ -2,6 +2,7 @@ package org.bakasoft.framboyan.expect;
 
 import java.util.function.Consumer;
 
+import org.bakasoft.framboyan.Action;
 import org.bakasoft.framboyan.diff.CloseToDiff;
 import org.bakasoft.framboyan.diff.CompareDiff;
 import org.bakasoft.framboyan.diff.ContainDiff;
@@ -13,7 +14,7 @@ import org.bakasoft.framboyan.diff.MatchDiff;
 import org.bakasoft.framboyan.diff.SameClassDiff;
 import org.bakasoft.framboyan.diff.SimilarDiff;
 import org.bakasoft.framboyan.diff.StartWithDiff;
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Normalizer;
 
 public class Expect implements ExpectTemplate {
 
@@ -116,7 +117,17 @@ public class Expect implements ExpectTemplate {
 	
 	@Override
 	public <T extends Exception> void toThrow(Class<T> expectedType, Consumer<T> details) {
-		Exception e = Toolbox.getException(actual);
+		// TODO: refactor this mess
+		Action action = Normalizer.toAction(actual);
+		Exception e;
+		
+		try {
+			action.run();
+			e = null;
+		}
+		catch (Exception exception) {
+			e = exception;
+		}
 		
 		if (e == null) {
 			if (expectedType == null) {

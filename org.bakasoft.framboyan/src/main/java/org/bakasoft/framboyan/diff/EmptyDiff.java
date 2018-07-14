@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.bakasoft.framboyan.util.JSON;
 import org.bakasoft.framboyan.util.Normalizer;
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 public class EmptyDiff extends AbstractDiff {
 
@@ -29,13 +29,13 @@ public class EmptyDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to be empty.", 
-				Toolbox.inspect(value));
+				Inspector.inspect(value));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s NOT to be empty.", 
-				Toolbox.inspect(value));
+				Inspector.inspect(value));
 	}
 
 	@Override

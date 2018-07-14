@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.bakasoft.framboyan.util.JSON;
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 public class EndWithListDiff extends AbstractDiff {
 
@@ -38,15 +38,15 @@ public class EndWithListDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to end with %s.", 
-				Toolbox.inspect(list),
-				Toolbox.inspect(suffix));
+				Inspector.inspect(list),
+				Inspector.inspect(suffix));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s NOT to end with %s.", 
-				Toolbox.inspect(list),
-				Toolbox.inspect(suffix));
+				Inspector.inspect(list),
+				Inspector.inspect(suffix));
 	}
 
 	@Override

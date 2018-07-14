@@ -1,6 +1,6 @@
 package org.bakasoft.framboyan.diff;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 abstract public class AbstractDiff {
 
@@ -19,9 +19,7 @@ abstract public class AbstractDiff {
 		String actual = generateActualValue();
 		String expected = generateExpectedValue();
 		
-		return Toolbox.bufferedPrinting(out -> {
-			Diff.print(out, actual, expected);
-		});
+		return Inspector.generateDiff(actual, expected);
 	}
 	
 	public void expect() {

@@ -1,7 +1,7 @@
 package org.bakasoft.framboyan.diff;
 
 import org.bakasoft.framboyan.util.JSON;
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 abstract public class CompareGenericDiff<T> extends AbstractDiff {
 
@@ -37,12 +37,12 @@ abstract public class CompareGenericDiff<T> extends AbstractDiff {
 		switch(sign) {
 		case "<":
 			return String.format("", 
-					Toolbox.inspect(left), 
-					Toolbox.inspect(right));
+					Inspector.inspect(left), 
+					Inspector.inspect(right));
 		case ">":
 			return String.format("", 
-					Toolbox.inspect(left), 
-					Toolbox.inspect(right));
+					Inspector.inspect(left), 
+					Inspector.inspect(right));
 		default:
 			throw new RuntimeException();
 		}
@@ -53,12 +53,12 @@ abstract public class CompareGenericDiff<T> extends AbstractDiff {
 		switch(sign) {
 		case "<":
 			return String.format("", 
-					Toolbox.inspect(left), 
-					Toolbox.inspect(right));
+					Inspector.inspect(left), 
+					Inspector.inspect(right));
 		case ">":
 			return String.format("", 
-					Toolbox.inspect(left), 
-					Toolbox.inspect(right));
+					Inspector.inspect(left), 
+					Inspector.inspect(right));
 		default:
 			throw new RuntimeException();
 		}

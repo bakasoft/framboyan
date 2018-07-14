@@ -3,22 +3,12 @@ package org.bakasoft.framboyan;
 import java.util.Arrays;
 import java.util.IllegalFormatException;
 
-import org.bakasoft.framboyan.util.DefaultStringifier;
-import org.bakasoft.framboyan.util.Stringifier;
-
 public class Console {
 	
 	private final StringBuilder output;
 	
-	private final Stringifier stringifier;
-	
 	public Console() {
-		this(new DefaultStringifier());
-	}
-	
-	public Console(Stringifier stringifier) {
 		this.output = new StringBuilder();
-		this.stringifier = stringifier;
 	}
 
 	public void log(Object... args) {
@@ -56,8 +46,4 @@ public class Console {
 		return log;
 	}
 
-	public Stringifier getStringifier() {
-		return stringifier;
-	}
-	
 }

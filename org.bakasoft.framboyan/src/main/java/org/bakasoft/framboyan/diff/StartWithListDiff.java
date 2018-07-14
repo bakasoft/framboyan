@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.bakasoft.framboyan.util.Inspector;
 import org.bakasoft.framboyan.util.JSON;
-import org.bakasoft.framboyan.util.Toolbox;
 
 public class StartWithListDiff extends AbstractDiff {
 
@@ -38,15 +38,15 @@ public class StartWithListDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to start with %s.", 
-				Toolbox.inspect(list),
-				Toolbox.inspect(prefix));
+				Inspector.inspect(list),
+				Inspector.inspect(prefix));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s NOT to start with %s.", 
-				Toolbox.inspect(list),
-				Toolbox.inspect(prefix));
+				Inspector.inspect(list),
+				Inspector.inspect(prefix));
 	}
 
 	@Override

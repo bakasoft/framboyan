@@ -2,7 +2,7 @@ package org.bakasoft.framboyan.diff;
 
 import java.util.Objects;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 public class SameClassDiff extends AbstractDiff {
 
@@ -28,14 +28,14 @@ public class SameClassDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to be of the same %s.", 
-			Toolbox.inspect(value),
-			type);
+				Inspector.inspect(value),
+				type);
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s NOT to be of the same %s.", 
-				Toolbox.inspect(value),
+				Inspector.inspect(value),
 				type);
 	}
 

@@ -2,7 +2,7 @@ package org.bakasoft.framboyan.diff;
 
 import java.math.BigDecimal;
 
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Normalizer;
 
 public class CloseToDiff extends AbstractDiff {
 
@@ -11,9 +11,9 @@ public class CloseToDiff extends AbstractDiff {
 	private final BigDecimal delta;
 	
 	public CloseToDiff(Object actual, Object expected, Object delta) {
-		this.actual = Toolbox.number(actual);
-		this.expected = Toolbox.number(expected);
-		this.delta = Toolbox.number(delta);
+		this.actual = Normalizer.toNumber(actual);
+		this.expected = Normalizer.toNumber(expected);
+		this.delta = Normalizer.toNumber(delta);
 	}
 
 	private BigDecimal getActualDelta() {

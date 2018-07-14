@@ -3,7 +3,7 @@ package org.bakasoft.framboyan.diff;
 import java.util.List;
 
 import org.bakasoft.framboyan.util.JSON;
-import org.bakasoft.framboyan.util.Toolbox;
+import org.bakasoft.framboyan.util.Inspector;
 
 public class ContainListDiff extends AbstractDiff {
 
@@ -23,15 +23,15 @@ public class ContainListDiff extends AbstractDiff {
 	@Override
 	public String generateExpectMessage() {
 		return String.format("Expected %s to contain %s.", 
-				Toolbox.inspect(set), 
-				Toolbox.inspect(subset));
+				Inspector.inspect(set), 
+				Inspector.inspect(subset));
 	}
 
 	@Override
 	public String generateNotExpectMessage() {
 		return String.format("Expected %s to NOT contain %s.", 
-				Toolbox.inspect(set), 
-				Toolbox.inspect(subset));
+				Inspector.inspect(set), 
+				Inspector.inspect(subset));
 	}
 
 	@Override
