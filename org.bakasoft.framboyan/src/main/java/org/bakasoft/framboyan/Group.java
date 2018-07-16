@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Group implements Target {
 	
-	private final Object subject;
+	private final Object description;
 	private final Mode mode;
 	private final ArrayList<Target> targets;
 	
 	public Group(Object subject, Mode mode) {
-		this.subject = subject;
+		this.description = subject;
 		this.mode = mode;
 		this.targets = new ArrayList<>();
 	}
@@ -25,7 +25,7 @@ public class Group implements Target {
 	
 	@Override
 	public Object getDescription() {
-		return subject;
+		return description;
 	}
 
 	@Override
@@ -46,12 +46,12 @@ public class Group implements Target {
 	
 	@Override
 	public String toString() {
-		return "Group: " + subject;
+		return "Group: " + description;
 	}
 
 	@Override
 	public Node buildInto(Node parent) {
-		Node node = new Node(parent, this, subject, null, isPending(), isFocused(), null);
+		Node node = new Node(parent, this, description, null, isPending(), isFocused(), null);
 		
 		for (Target target : targets) {
 			Node subnode = target.buildInto(node);

@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.bakasoft.framboyan.util.Inspector;
 import org.bakasoft.framboyan.util.JSON;
 
-public class StartWithListDiff extends AbstractDiff {
+public class StartWithListDiff implements Diff {
 
 	private final List<?> list;
 	private final List<?> prefix;

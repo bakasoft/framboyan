@@ -4,7 +4,7 @@ import org.bakasoft.framboyan.util.Inspector;
 import org.bakasoft.framboyan.util.JSON;
 import org.bakasoft.framboyan.util.Normalizer;
 
-public class SimilarDiff extends AbstractDiff {
+public class SimilarDiff implements Diff {
 
 	private final Object actual;
 	private final Object expected;

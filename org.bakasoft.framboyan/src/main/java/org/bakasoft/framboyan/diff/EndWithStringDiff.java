@@ -3,7 +3,7 @@ package org.bakasoft.framboyan.diff;
 import org.bakasoft.framboyan.util.Inspector;
 import org.bakasoft.framboyan.util.Strings;
 
-public class EndWithStringDiff extends AbstractDiff {
+public class EndWithStringDiff implements Diff {
 
 	private final String text;
 	private final String suffix;

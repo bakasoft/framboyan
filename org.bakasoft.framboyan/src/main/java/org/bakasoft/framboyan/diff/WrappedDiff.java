@@ -2,11 +2,11 @@ package org.bakasoft.framboyan.diff;
 
 import java.util.function.Supplier;
 
-abstract public class WrappedDiff extends AbstractDiff {
+abstract public class WrappedDiff implements Diff {
 
-	private final AbstractDiff impl;
+	private final Diff impl;
 	
-	public WrappedDiff(Supplier<AbstractDiff> impl) {
+	public WrappedDiff(Supplier<Diff> impl) {
 		this.impl = impl.get();
 	}
 	

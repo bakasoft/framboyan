@@ -27,6 +27,10 @@ public class Expect implements ExpectTemplate {
 		this.not = new NotExpect(actual);
 	}
 	
+	public Object getValue() {
+		return actual;
+	}
+	
 	/* similarity */
 	
 	@Override

@@ -80,10 +80,8 @@ public class SpecTest extends Framboyan {{
 		
 		describe("toString() method", () -> {
 			it ("should generated expected text", () -> {
-				Group group = new Group("GROUP", null);
 				Spec spec = new Spec("SPEC", null, null);
 				
-				expect(group.toString()).toBe("Group: GROUP");
 				expect(spec.toString()).toBe("Spec: SPEC");
 			});
 		});

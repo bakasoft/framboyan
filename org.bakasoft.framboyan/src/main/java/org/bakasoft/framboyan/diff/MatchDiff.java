@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import org.bakasoft.framboyan.util.Inspector;
 import org.bakasoft.framboyan.util.Normalizer;
 
-public class MatchDiff extends AbstractDiff {
+public class MatchDiff implements Diff {
 
 	private final String text;
 	private final Pattern pattern;

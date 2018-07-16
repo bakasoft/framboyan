@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import org.bakasoft.framboyan.util.Normalizer;
 
-public class CloseToDiff extends AbstractDiff {
+public class CloseToDiff implements Diff {
 
 	private final BigDecimal actual;
 	private final BigDecimal expected;

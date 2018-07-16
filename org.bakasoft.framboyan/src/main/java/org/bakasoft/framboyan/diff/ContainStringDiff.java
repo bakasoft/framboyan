@@ -1,6 +1,6 @@
 package org.bakasoft.framboyan.diff;
 
-public class ContainStringDiff extends AbstractDiff {
+public class ContainStringDiff implements Diff {
 
 	private final String text;
 	private final String part;

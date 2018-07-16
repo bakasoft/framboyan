@@ -2,19 +2,19 @@ package org.bakasoft.framboyan.diff;
 
 import org.bakasoft.framboyan.util.Inspector;
 
-abstract public class AbstractDiff {
+public interface Diff {
 
-	abstract public boolean test();
+	boolean test();
 	
-	abstract public String generateExpectMessage();
+	String generateExpectMessage();
 	
-	abstract public String generateNotExpectMessage();
+	String generateNotExpectMessage();
 	
-	abstract public String generateActualValue();
+	String generateActualValue();
 	
-	abstract public String generateExpectedValue();
+	String generateExpectedValue();
 	
-	public String generateDifference() {
+	default String generateDifference() {
 		// TODO: same diff message when `notExpect`?
 		String actual = generateActualValue();
 		String expected = generateExpectedValue();
@@ -22,7 +22,7 @@ abstract public class AbstractDiff {
 		return Inspector.generateDiff(actual, expected);
 	}
 	
-	public void expect() {
+	default void expect() {
 		if (!test()) {
 			String message = generateExpectMessage();
 			String difference = generateDifference();
@@ -31,7 +31,7 @@ abstract public class AbstractDiff {
 		}
 	}
 	
-	public void notExpect() {
+	default void notExpect() {
 		if (test()) {
 			String message = generateNotExpectMessage();
 			String difference = generateDifference();

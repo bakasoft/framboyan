@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import org.bakasoft.framboyan.util.Inspector;
 
-public class InstanceOfDiff extends AbstractDiff {
+public class InstanceOfDiff implements Diff {
 
 	private final Object value;
 	

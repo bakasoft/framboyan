@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import org.bakasoft.framboyan.util.Inspector;
 
-public class SameClassDiff extends AbstractDiff {
+public class SameClassDiff implements Diff {
 
 	private final Object value;
 	

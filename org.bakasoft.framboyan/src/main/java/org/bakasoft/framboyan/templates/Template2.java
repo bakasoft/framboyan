@@ -1,5 +1,6 @@
 package org.bakasoft.framboyan.templates;
 
+// TODO: remove this class and use only Template2Action
 public class Template2<T1, T2> {
 	
 	private final Template2Action<T1, T2> action;

@@ -6,7 +6,7 @@ import org.bakasoft.framboyan.util.JSON;
 import org.bakasoft.framboyan.util.Normalizer;
 import org.bakasoft.framboyan.util.Inspector;
 
-public class EmptyDiff extends AbstractDiff {
+public class EmptyDiff implements Diff {
 
 	private final Object value;
 	

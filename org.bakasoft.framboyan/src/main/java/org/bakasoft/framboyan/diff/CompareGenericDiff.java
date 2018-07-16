@@ -3,7 +3,7 @@ package org.bakasoft.framboyan.diff;
 import org.bakasoft.framboyan.util.JSON;
 import org.bakasoft.framboyan.util.Inspector;
 
-abstract public class CompareGenericDiff<T> extends AbstractDiff {
+abstract public class CompareGenericDiff<T> implements Diff {
 
 	abstract protected int compare();
 	

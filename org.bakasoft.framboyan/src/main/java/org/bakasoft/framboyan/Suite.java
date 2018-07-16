@@ -45,7 +45,7 @@ public class Suite implements Target {
 
 	@Override
 	public boolean isPending() {
-		return Target.getPendingFromClass(getClass(), false);
+		return _targets.isEmpty() || Target.getPendingFromClass(getClass(), false);
 	}
 
 	@Override
@@ -192,5 +192,7 @@ public class Suite implements Target {
 	public void fail() {
 		throw new AssertionError();
 	}
+	
+	// TODO: add fail with message
 	
 }

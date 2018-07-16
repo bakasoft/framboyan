@@ -2,7 +2,7 @@ package org.bakasoft.framboyan.diff;
 
 import org.bakasoft.framboyan.util.Inspector;
 
-public class EqualDiff extends AbstractDiff {
+public class EqualDiff implements Diff {
 
 	private final Object actual;
 	private final Object expected;

@@ -5,7 +5,7 @@ import java.util.List;
 import org.bakasoft.framboyan.util.JSON;
 import org.bakasoft.framboyan.util.Inspector;
 
-public class ContainListDiff extends AbstractDiff {
+public class ContainListDiff implements Diff {
 
 	private final List<?> set;
 	private final List<?> subset;
