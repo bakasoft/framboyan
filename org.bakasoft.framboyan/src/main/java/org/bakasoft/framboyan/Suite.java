@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import org.bakasoft.framboyan.console.Console;
 import org.bakasoft.framboyan.expect.Expect;
 import org.bakasoft.framboyan.templaters.Templater2x2;
 import org.bakasoft.framboyan.templaters.Templater2x2Builder;

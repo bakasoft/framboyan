@@ -6,6 +6,7 @@ import java.util.function.UnaryOperator;
 import org.bakasoft.framboyan.annotation.Describe;
 import org.bakasoft.framboyan.annotation.Focused;
 import org.bakasoft.framboyan.annotation.Pending;
+import org.bakasoft.framboyan.console.Console;
 import org.bakasoft.framboyan.expect.Expect;
 
 @Describe("Suite class")

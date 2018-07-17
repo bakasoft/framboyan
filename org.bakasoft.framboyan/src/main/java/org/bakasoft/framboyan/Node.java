@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
+import org.bakasoft.framboyan.console.Console;
+import org.bakasoft.framboyan.console.ConsoleEvent;
+
 public class Node {
 
 	private final Target target;
@@ -81,7 +84,7 @@ public class Node {
 			error = e;
 		}
 	
-		String output = console != null ? console.consume() : null;
+		ConsoleEvent[] output = console != null ? console.popEvents() : null;
 		
 		return new Result(successful, pending, error, output);
 	}

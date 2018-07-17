@@ -3,7 +3,7 @@ package org.bakasoft.framboyan;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bakasoft.framboyan.runners.PlainTextRunner;
+import org.bakasoft.framboyan.plainText.PlainTextRunner;
 import org.bakasoft.framboyan.util.Reflection;
 
 public class FramboyanLoader {

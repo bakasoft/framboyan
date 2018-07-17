@@ -1,6 +1,8 @@
 package org.bakasoft.framboyan;
 
 import org.bakasoft.framboyan.annotation.Describe;
+import org.bakasoft.framboyan.console.Console;
+import org.bakasoft.framboyan.console.ConsoleLog;
 
 @Describe("class Node")
 public class NodeTest extends Framboyan {{	
@@ -74,7 +76,14 @@ public class NodeTest extends Framboyan {{
 				console.log("TEST");
 			}, false, false, console);
 
-			expect(nodeConsole.run(false).getOutput()).toEqual("TEST" + System.lineSeparator());
+			// with output
+			expect(nodeConsole.run(false).getOutput()).not.toBeNull();
+			expect(nodeConsole.run(false).getOutput().length).toBe(1);
+			expect(nodeConsole.run(false).getOutput()[0]).toBeInstanceOf(ConsoleLog.class);
+			expect(((ConsoleLog)nodeConsole.run(false).getOutput()[0]).getItems()).not.toBeNull();
+			expect(((ConsoleLog)nodeConsole.run(false).getOutput()[0]).getItems().length).toBe(1);
+			expect(((ConsoleLog)nodeConsole.run(false).getOutput()[0]).getItems()[0]).toBe("TEST");
+			
 			expect(nodeConsole.run(true).getOutput()).toBeEmpty();
 			expect(nodeNoConsole.run(true).getOutput()).toBeNull();
 		});

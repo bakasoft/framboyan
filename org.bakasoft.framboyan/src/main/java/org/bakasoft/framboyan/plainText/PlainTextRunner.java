@@ -1,4 +1,4 @@
-package org.bakasoft.framboyan.runners;
+package org.bakasoft.framboyan.plainText;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -9,12 +9,16 @@ import org.bakasoft.framboyan.util.Strings;
 import org.bakasoft.framboyan.Node;
 import org.bakasoft.framboyan.Result;
 import org.bakasoft.framboyan.Runner;
+import org.bakasoft.framboyan.console.ConsoleEvent;
+import org.bakasoft.framboyan.console.ConsoleRenderer;
 import org.bakasoft.framboyan.diff.DiffError;
 
 public class PlainTextRunner implements Runner {
 
 	private final PrintStream out;
 
+	private final ConsoleRenderer renderer;
+	
 	private String lastGroupSubject;
 	
 	public PlainTextRunner() {
@@ -23,6 +27,7 @@ public class PlainTextRunner implements Runner {
 	
 	public PlainTextRunner(PrintStream out) {
 		this.out = out;
+		this.renderer = new PlainTextConsoleRenderer();
 	}
 
 	@Override
@@ -48,10 +53,11 @@ public class PlainTextRunner implements Runner {
 		} else {
 			out.println("  " + specSubject + " ❌");
 		
-			String output = result.getOutput();
-			if (output != null && !output.isEmpty()) {
+			ConsoleEvent[] output = result.getOutput();
+			if (output != null && output.length > 0) {
 				out.println();
-				out.println(Strings.trimEnd(output)); // TODO: trim instead the first and last empty lines
+				
+				renderer.render(output, out);
 			}
 
 			Throwable error = result.getError();
@@ -61,7 +67,7 @@ public class PlainTextRunner implements Runner {
 					
 					if (diff.getDifference() != null && !diff.getDifference().isEmpty()) {
 						out.println();
-						out.println(Strings.trimEnd(diff.getDifference()));	
+						out.println(Strings.trimEnd(diff.getDifference()));	 // TODO: trim instead the first and last empty lines
 					}
 				}
 				
