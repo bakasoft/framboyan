@@ -8,6 +8,10 @@ public interface ExpectTemplate {
 	
 	void toEqual(Object expected);
 	
+	default void toBe(Object... items) {
+		toBe((Object)items);
+	}
+	
 	void toBe(Object expected);
 	
 	void toBeNull();

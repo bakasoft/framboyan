@@ -1,0 +1,21 @@
+{
+	"class": "org.bakasoft.framboyan.diff.CloseToDiff",
+	"cases": [
+		{
+			"arguments": [10, 10, 0],
+			"result": true,
+			"expectMessage": "Expected 10 to be close to 10 with a delta of 0 instead of 0.",
+			"notExpectMessage": "Expected 10 NOT to be close to 10 with a delta of 0 instead of 0.",
+			"actualValue": "{ value: 10, delta: 0 }",
+			"expectedValue": "{ value: 10, delta: 0 }"
+		},
+		{
+			"arguments": [1, 2.5, 0.5],
+			"result": false,
+			"expectMessage": "Expected 1 to be close to 2.5 with a delta of 0.5 instead of 1.5.",
+			"notExpectMessage": "Expected 1 NOT to be close to 2.5 with a delta of 0.5 instead of 1.5.",
+			"actualValue": "{ value: 1, delta: 1.5 }",
+			"expectedValue": "{ value: 2.5, delta: 0.5 }"
+		}
+	]
+}

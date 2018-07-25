@@ -6,6 +6,7 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -14,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Stack;
+
+import org.bakasoft.framboyan.json.JsonReader;
 
 public class JSON {
 
@@ -208,5 +211,20 @@ public class JSON {
 			out.print("  "); // TODO: make it configurable
 		}
 	}
+	
+	public static Object parse(String json) {
+		return new JsonReader(json).readValue();
+	}
+	
+	public static Object parse(Reader reader) {
+		return new JsonReader(reader).readValue();
+	}
 
+	public static Map<String, Object> parseMap(String json) {
+		return new JsonReader(json).readMap();
+	}
+
+	public static List<Object> parseList(String json) {
+		return new JsonReader(json).readList();
+	}
 }

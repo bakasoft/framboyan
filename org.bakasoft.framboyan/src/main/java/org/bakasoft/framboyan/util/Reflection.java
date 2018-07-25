@@ -85,25 +85,63 @@ public class Reflection {
 				&& Arrays.stream(type.getConstructors()).anyMatch(ctr -> ctr.getParameterCount() == 0);
 	}
 
-	public static <T> T createInstance(Class<? extends T> type) {
-		try {
-			Constructor<? extends T> ctr = type.getConstructor();
+	public static boolean isCompatible(Class<?> type, Object obj) {
+		if (type == null) {
+			return false;
+		}
+		else if (obj == null) {
+			return !type.isPrimitive();
+		}
+		
+		return type.isAssignableFrom(obj.getClass());
+	}
+	
+	public static Constructor<?> getConstructor(Class<?> type, Object... args) {
+		for (Constructor<?> ctr : type.getConstructors()) {
+			Class<?>[] paramTypes = ctr.getParameterTypes();
 			
-			return ctr.newInstance();
-		} catch (NoSuchMethodException e) {
-			throw new RuntimeException(e); // TODO message "no empty constructor"
+			if (paramTypes.length == args.length) {
+				for (int i = 0; i < args.length; i++) {
+					if (!isCompatible(paramTypes[i], args[i])) {
+						continue;
+					}
+				}
+				
+				return ctr;
+			}
+		}
+		
+		return null;
+	}
+
+	public static <T> T createInstance(Class<? extends T> type, Object... args) {
+		Constructor<?> ctr = getConstructor(type, args);
+		
+		if (ctr == null) {
+			throw new RuntimeException("no ctr");
+		}
+		
+		try {	
+			Object obj = ctr.newInstance(args);
+			
+			return type.cast(obj);
 		} catch (InstantiationException e) {
 			throw new RuntimeException(e); // TODO message "is interface, abstract or something like that"
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e); // TODO message "not accessible constructor"
 		} catch (InvocationTargetException e) {
-			throw new RuntimeException(e); // TODO message "an error inside the constructor"
+			if (e.getCause() instanceof RuntimeException) {
+				throw (RuntimeException)e.getCause();	
+			}
+			else {
+				throw new RuntimeException(e);
+			}
 		} catch (SecurityException | IllegalArgumentException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static <T> T createInstance(Class<?> type, Class<? extends T> superType) {
+	public static <T> T createInstanceAs(Class<?> type, Class<? extends T> superType) {
 		if(!superType.isAssignableFrom(type)) {
 			throw new RuntimeException("Not supported type: " + type);
 		}
@@ -113,17 +151,20 @@ public class Reflection {
 		return createInstance(suiteClass);
 	}
 
-	public static Class<?> getCallerClass() {
+	public static Class<?> getCallerClass(Class<?> excludeClass) {
 		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
-
-		if (elements.length >= 4) {
-			String className = elements[3].getClassName();
+		String excludedClassName = excludeClass.getName();
+		
+		for(int i = 2; i < elements.length; i++) {
+			String className = elements[i].getClassName();
 			
-			try {
-				return Class.forName(className);
-			} 
-			catch (ClassNotFoundException e) {
-				throw new RuntimeException(e);
+			if (!className.equals(excludedClassName)) {
+				try {
+					return Class.forName(className);
+				} 
+				catch (ClassNotFoundException e) {
+					throw new RuntimeException(e);
+				}	
 			}
 		}
 		

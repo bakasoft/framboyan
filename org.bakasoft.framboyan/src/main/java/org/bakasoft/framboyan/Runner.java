@@ -17,7 +17,7 @@ public interface Runner {
 		for (Class<?> type : types) {
 			if (Target.class.isAssignableFrom(type)) {
 				if (Reflection.hasEmptyConstructor(type)) {
-					Target target = Reflection.createInstance(type, Target.class);
+					Target target = Reflection.createInstanceAs(type, Target.class);
 					
 					targets.add(target);
 				}

@@ -46,7 +46,7 @@ public class CloseToDiff implements Diff {
 
 	@Override
 	public String generateExpectedValue() {
-		return "{ value:" + expected + ", delta: " + delta + " }";
+		return "{ value: " + expected + ", delta: " + delta + " }";
 	}
 
 }
