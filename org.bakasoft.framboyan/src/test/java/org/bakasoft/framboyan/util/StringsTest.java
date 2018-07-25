@@ -7,7 +7,8 @@ import org.bakasoft.framboyan.annotation.Describe;
 public class StringsTest extends Framboyan {{
     describe("method split(String, char)", () -> {
         it("should return empty array on null input", () -> {
-            expect(Strings.split(null, ',')).toBe(new String[0]);
+            expect(Strings.split(null, ',')).not.toBeNull();
+            expect(Strings.split(null, ',')).toBeEmpty();
         });
         it("should split the given string", () -> {
             expect(Strings.split("a-b-c", '-')).toBe("a", "b", "c");

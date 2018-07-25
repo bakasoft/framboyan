@@ -22,6 +22,7 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import org.bakasoft.framboyan.Action;
+import org.bakasoft.framboyan.exceptions.NotSupportedClassException;
 
 public class Normalizer {
 	
@@ -226,19 +227,20 @@ public class Normalizer {
 			return (Action) value;
 		}
 		else {
-			throw new RuntimeException();
+			throw new NotSupportedClassException(value, Action.class);
 		}	
 	}
 
 	public static Pattern toPattern(Object value) {
 		if (value instanceof Pattern) {
-			return ((Pattern)value);
+			return (Pattern)value;
 		}
 		else if (value instanceof String) {
-			return (Pattern.compile((String)value));
+			return Pattern.compile((String)value);
 		}
-		
-		throw new RuntimeException("invalid pattern");
+		else {
+			throw new NotSupportedClassException(value, Pattern.class, String.class);
+		}
 	}
 
 	public static void normalizeArray(Object[] items) {
@@ -251,7 +253,7 @@ public class Normalizer {
 		BigDecimal number = toNumber(value, null);
 	
 		if (number == null) {
-			throw new RuntimeException(); // TODO: message: cannot convert to number
+			throw new NotSupportedClassException(value, Number.class);
 		}
 		
 		return number;
@@ -261,14 +263,12 @@ public class Normalizer {
 		String string = toString(value, null);
 		
 		if (string == null) {
-			throw new RuntimeException(); // TODO: message: cannot convert to string
+            throw new NotSupportedClassException(value, String.class);
 		}
 		
 		return string;
 	}
-	
-	// TODO: complete method overloads
-	
+
 	private static class NormalizedList extends ArrayList<Object> {
 
 		private static final long serialVersionUID = 2843166128879835990L;

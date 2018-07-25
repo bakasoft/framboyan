@@ -1,5 +1,6 @@
 package org.bakasoft.framboyan.util;
 
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public class Strings {
@@ -51,5 +52,32 @@ public class Strings {
 		}
 		
 		return text;
+	}
+
+    public static <T> String join(String separator, T[] items, Function<T, String> mapper) {
+	    return join(separator, separator, items, mapper);
+    }
+
+    public static <T> String join(String separator, String lastSeparator, T[] items, Function<T, String> mapper) {
+		if (items == null) {
+		    return "";
+		}
+
+	    StringBuilder output = new StringBuilder();
+
+		for (int i = 0; i < items.length; i++) {
+		    if (i > 0) {
+		        if (i == items.length - 1) {
+		            output.append(lastSeparator);
+                }
+                else {
+		            output.append(separator);
+                }
+            }
+
+            output.append(mapper.apply(items[i]));
+        }
+
+		return output.toString();
 	}
 }
