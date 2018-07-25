@@ -1,5 +1,8 @@
 package org.bakasoft.framboyan.util;
 
+import org.bakasoft.framboyan.exceptions.MissingConstructorException;
+import org.bakasoft.framboyan.exceptions.NotSupportedClassException;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -118,7 +121,7 @@ public class Reflection {
 		Constructor<?> ctr = getConstructor(type, args);
 		
 		if (ctr == null) {
-			throw new RuntimeException("no ctr");
+			throw new MissingConstructorException(type, args);
 		}
 		
 		try {	
@@ -130,11 +133,12 @@ public class Reflection {
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException(e); // TODO message "not accessible constructor"
 		} catch (InvocationTargetException e) {
-			if (e.getCause() instanceof RuntimeException) {
-				throw (RuntimeException)e.getCause();	
+			Throwable realException = e.getCause();
+			if (realException instanceof RuntimeException) {
+				throw (RuntimeException)realException;
 			}
 			else {
-				throw new RuntimeException(e);
+				throw new RuntimeException(realException);
 			}
 		} catch (SecurityException | IllegalArgumentException e) {
 			throw new RuntimeException(e);
@@ -143,7 +147,7 @@ public class Reflection {
 
 	public static <T> T createInstanceAs(Class<?> type, Class<? extends T> superType) {
 		if(!superType.isAssignableFrom(type)) {
-			throw new RuntimeException("Not supported type: " + type);
+			throw new NotSupportedClassException(type, superType);
 		}
 		
 		Class<? extends T> suiteClass = type.asSubclass(superType);

@@ -3,6 +3,8 @@ package org.bakasoft.framboyan;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bakasoft.framboyan.exceptions.MissingConstructorException;
+import org.bakasoft.framboyan.exceptions.NotSupportedClassException;
 import org.bakasoft.framboyan.util.Reflection;
 
 public interface Runner {
@@ -22,11 +24,11 @@ public interface Runner {
 					targets.add(target);
 				}
 				else {
-					throw new RuntimeException();	
+					throw new MissingConstructorException(type);
 				}
 			}
 			else {
-				throw new RuntimeException();
+				throw new NotSupportedClassException(type);
 			}
 		}
 		
