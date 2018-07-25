@@ -15,7 +15,7 @@ public class StartWithStringDiff implements Diff {
 
 	@Override
 	public boolean test() {
-		return text.endsWith(suffix);
+		return text.startsWith(suffix);
 	}
 
 	@Override

@@ -1,5 +1,29 @@
 {
 	"class": "org.bakasoft.framboyan.diff.CompareNumberDiff",
 	"cases": [
+		{
+			"arguments": [0, 1, "<"],
+			"result": true
+		},
+		{
+			"arguments": [1, 1, "<"],
+			"result": false
+		},
+		{
+			"arguments": [1, 0, "<"],
+			"result": false
+		},
+		{
+			"arguments": [0, 1, ">"],
+			"result": false
+		},
+		{
+			"arguments": [1, 1, ">"],
+			"result": false
+		},
+		{
+			"arguments": [1, 0, ">"],
+			"result": true
+		}
 	]
 }

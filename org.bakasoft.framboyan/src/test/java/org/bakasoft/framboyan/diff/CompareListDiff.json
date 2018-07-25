@@ -1,5 +1,29 @@
 {
 	"class": "org.bakasoft.framboyan.diff.CompareListDiff",
 	"cases": [
+		{
+			"arguments": [["a", "b"]     , ["a", "b", "c"], "<"],
+			"result": true
+		},
+		{
+			"arguments": [["a", "b", "c"], ["a", "b", "c"], "<"],
+			"result": false
+		},
+		{
+			"arguments": [["a", "b", "c"], ["a", "b"]     , "<"],
+			"result": false
+		},
+		{
+			"arguments": [["a", "b"]     , ["a", "b", "c"], ">"],
+			"result": false
+		},
+		{
+			"arguments": [["a", "b", "c"], ["a", "b", "c"], ">"],
+			"result": false
+		},
+		{
+			"arguments": [["a", "b", "c"], ["a", "b"]     , ">"],
+			"result": true
+		}
 	]
 }

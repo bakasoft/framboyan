@@ -1,5 +1,13 @@
 {
 	"class": "org.bakasoft.framboyan.diff.MatchDiff",
 	"cases": [
+		{
+			"arguments": ["abcabc", "(abc)+"],
+			"result": true
+		},
+		{
+			"arguments": ["abc", "a+"],
+			"result": false
+		}
 	]
 }

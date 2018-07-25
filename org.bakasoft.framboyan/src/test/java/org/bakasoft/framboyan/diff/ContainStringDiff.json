@@ -1,5 +1,13 @@
 {
 	"class": "org.bakasoft.framboyan.diff.ContainStringDiff",
 	"cases": [
+		{
+			"arguments": ["abc", "bc"],
+			"result": true
+		},
+		{
+			"arguments": ["abc", "ac"],
+			"result": false
+		}
 	]
 }

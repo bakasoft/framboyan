@@ -1,5 +1,29 @@
 {
 	"class": "org.bakasoft.framboyan.diff.EmptyDiff",
 	"cases": [
+		{
+			"arguments": [""],
+			"result": true
+		},
+		{
+			"arguments": ["a"],
+			"result": false
+		},
+		{
+			"arguments": [[]],
+			"result": true
+		},
+		{
+			"arguments": [[1]],
+			"result": false
+		},
+		{
+			"arguments": [null],
+			"result": true
+		},
+		{
+			"arguments": [{ "test": "" }],
+			"result": false
+		}
 	]
 }

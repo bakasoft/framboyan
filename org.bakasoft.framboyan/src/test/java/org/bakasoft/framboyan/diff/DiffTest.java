@@ -12,6 +12,24 @@ public class DiffTest extends Framboyan {{
 	for (String file : new String[] {
 		"CloseToDiff.json",
 		"CompareDiff.json",
+		"CompareListDiff.json",
+		"CompareNumberDiff.json",
+		"CompareStringDiff.json",
+		"ContainDiff.json",
+		"ContainListDiff.json",
+		"ContainStringDiff.json",
+		"EmptyDiff.json",
+		"EndWithDiff.json",
+		"EndWithListDiff.json",
+		"EndWithStringDiff.json",
+		"EqualDiff.json",
+		"InstanceOfDiff.json",
+		"MatchDiff.json",
+		"SameClassDiff.json",
+		"SimilarDiff.json",
+		"StartWithDiff.json",
+		"StartWithListDiff.json",
+		"StartWithStringDiff.json",
 	}) {
 		Map<?, ?> map = Resources.loadJsonMap(file);
 		String className = String.valueOf(map.get("class"));
@@ -53,14 +71,18 @@ public class DiffTest extends Framboyan {{
 		}
 		
 		describe("class " + diffClass.getSimpleName() + " (" + file + ")", () -> {
-				
-			it("method test() should return the expected value", () -> {
-				for (DiffCase diffCase : diffCases) {
-					console.log("using arguments: " + diffCase.arguments);
-					
-					expect(diffCase.diff.test()).toBe(diffCase.result);	
-				}
-			});
+
+			if (diffCases.stream().anyMatch(diffCase -> diffCase.result != null)) {
+				it("method test() should return the expected value", () -> {
+					for (DiffCase diffCase : diffCases) {
+						if (diffCase.result != null) {
+							console.log("using arguments: " + diffCase.arguments);
+
+							expect(diffCase.diff.test()).toBe(diffCase.result);
+						}
+					}
+				});
+			}
 			
 			if (diffCases.stream().anyMatch(diffCase -> diffCase.expectMessage != null)) {
 				it("method generateExpectMessage() should return the expected text", () -> {

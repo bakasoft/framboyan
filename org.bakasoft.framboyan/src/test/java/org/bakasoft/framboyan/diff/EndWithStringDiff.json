@@ -1,5 +1,13 @@
 {
 	"class": "org.bakasoft.framboyan.diff.EndWithStringDiff",
 	"cases": [
+		{
+			"arguments": ["abc", "bc"],
+			"result": true
+		},
+		{
+			"arguments": ["abc", "b"],
+			"result": false
+		}
 	]
 }

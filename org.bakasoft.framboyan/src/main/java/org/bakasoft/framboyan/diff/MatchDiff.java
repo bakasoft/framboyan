@@ -1,5 +1,6 @@
 package org.bakasoft.framboyan.diff;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.bakasoft.framboyan.util.Inspector;

@@ -1,5 +1,13 @@
 {
 	"class": "org.bakasoft.framboyan.diff.ContainListDiff",
 	"cases": [
+		{
+			"arguments": [["a", "b", "c"], ["c", "a"]],
+			"result": true
+		},
+		{
+			"arguments": [["a", "b", "c"], ["c", "z"]],
+			"result": false
+		}
 	]
 }
