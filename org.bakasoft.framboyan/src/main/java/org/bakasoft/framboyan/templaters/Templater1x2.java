@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 import org.bakasoft.framboyan.templates.Template2;
 
-public class Templater2x2<T1, T2, U1, U2> {
+public class Templater1x2<T1, U1, U2> {
 
-	private final Templater2x2Builder<T1, T2, U1, U2> builder;
+	private final Templater1x2Builder<T1, U1, U2> builder;
 
-	public Templater2x2(Templater2x2Builder<T1, T2, U1, U2> builder) {
+	public Templater1x2(Templater1x2Builder<T1, U1, U2> builder) {
 		this.builder = builder;
 	}
 
-	public Batch using(T1 arg1, T2 arg2) {
-		return new Batch().using(arg1, arg2);
+	public Batch using(T1 arg1) {
+		return new Batch().using(arg1);
 	}
 
 	public class Batch {
@@ -25,8 +25,8 @@ public class Templater2x2<T1, T2, U1, U2> {
 			this.templates = new ArrayList<>();
 		}
 
-		public Batch using(T1 arg1, T2 arg2) {
-			templates.add(builder.build(arg1, arg2));
+		public Batch using(T1 arg1) {
+			templates.add(builder.build(arg1));
 			return this;
 		}
 

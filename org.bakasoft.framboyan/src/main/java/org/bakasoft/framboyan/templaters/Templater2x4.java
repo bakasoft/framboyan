@@ -3,13 +3,13 @@ package org.bakasoft.framboyan.templaters;
 
 import java.util.ArrayList;
 
-import org.bakasoft.framboyan.templates.Template2;
+import org.bakasoft.framboyan.templates.Template4;
 
-public class Templater2x2<T1, T2, U1, U2> {
+public class Templater2x4<T1, T2, U1, U2, U3, U4> {
 
-	private final Templater2x2Builder<T1, T2, U1, U2> builder;
+	private final Templater2x4Builder<T1, T2, U1, U2, U3, U4> builder;
 
-	public Templater2x2(Templater2x2Builder<T1, T2, U1, U2> builder) {
+	public Templater2x4(Templater2x4Builder<T1, T2, U1, U2, U3, U4> builder) {
 		this.builder = builder;
 	}
 
@@ -19,7 +19,7 @@ public class Templater2x2<T1, T2, U1, U2> {
 
 	public class Batch {
 
-		private final ArrayList<Template2<U1, U2>> templates;
+		private final ArrayList<Template4<U1, U2, U3, U4>> templates;
 
 		public Batch() {
 			this.templates = new ArrayList<>();
@@ -30,13 +30,13 @@ public class Templater2x2<T1, T2, U1, U2> {
 			return this;
 		}
 
-		public Batch test(U1 arg1, U2 arg2) {
+		public Batch test(U1 arg1, U2 arg2, U3 arg3, U4 arg4) {
 			if (templates.isEmpty()) {
 				throw new RuntimeException();
 			}
 
-			for (Template2<U1, U2> template : templates) {
-				template.test(arg1, arg2);
+			for (Template4<U1, U2, U3, U4> template : templates) {
+				template.test(arg1, arg2, arg3, arg4);
 			}
 
 			return this;

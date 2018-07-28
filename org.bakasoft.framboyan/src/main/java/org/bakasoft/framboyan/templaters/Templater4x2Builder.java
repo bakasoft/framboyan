@@ -4,8 +4,8 @@ package org.bakasoft.framboyan.templaters;
 import org.bakasoft.framboyan.templates.Template2;
 
 @FunctionalInterface
-public interface Templater2x2Builder<T1, T2, U1, U2> {
+public interface Templater4x2Builder<T1, T2, T3, T4, U1, U2> {
 
-	Template2<U1, U2> build(T1 arg1, T2 arg2);
+	Template2<U1, U2> build(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 
 }
