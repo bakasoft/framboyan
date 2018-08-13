@@ -28,7 +28,7 @@ abstract public class CompareGenericDiff<T> implements Diff {
 		case ">":
 			return diff > 0;
 		default:
-			throw new RuntimeException();
+			throw new IllegalStateException("Illegal operator: " + sign);
 		}
 	}
 
@@ -44,7 +44,7 @@ abstract public class CompareGenericDiff<T> implements Diff {
 					Inspector.inspect(left), 
 					Inspector.inspect(right));
 		default:
-			throw new RuntimeException();
+			throw new IllegalStateException("Illegal operator: " + sign);
 		}
 	}
 
@@ -60,7 +60,7 @@ abstract public class CompareGenericDiff<T> implements Diff {
 					Inspector.inspect(left), 
 					Inspector.inspect(right));
 		default:
-			throw new RuntimeException();
+			throw new IllegalStateException("Illegal operator: " + sign);
 		}
 	}
 

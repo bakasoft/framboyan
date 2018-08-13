@@ -1,5 +1,6 @@
 package org.bakasoft.framboyan.util;
 
+import org.bakasoft.framboyan.exceptions.CreatingInstanceException;
 import org.bakasoft.framboyan.exceptions.MissingConstructorException;
 import org.bakasoft.framboyan.exceptions.NotSupportedClassException;
 
@@ -129,19 +130,19 @@ public class Reflection {
 			
 			return type.cast(obj);
 		} catch (InstantiationException e) {
-			throw new RuntimeException(e); // TODO message "is interface, abstract or something like that"
+			throw new CreatingInstanceException(e);
 		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e); // TODO message "not accessible constructor"
+			throw new CreatingInstanceException(e);
 		} catch (InvocationTargetException e) {
 			Throwable realException = e.getCause();
 			if (realException instanceof RuntimeException) {
 				throw (RuntimeException)realException;
 			}
 			else {
-				throw new RuntimeException(realException);
+				throw new CreatingInstanceException(realException);
 			}
 		} catch (SecurityException | IllegalArgumentException e) {
-			throw new RuntimeException(e);
+			throw new CreatingInstanceException(e);
 		}
 	}
 

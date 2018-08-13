@@ -51,7 +51,7 @@ public class Node {
 	public void addNode(Node node) {
 		// check for the parent
 		if (node.getParent() != this) {
-			throw new RuntimeException("the kid is not my son");
+			throw new IllegalStateException("Illegal Node owner.");
 		}
 		
 		children.add(node);

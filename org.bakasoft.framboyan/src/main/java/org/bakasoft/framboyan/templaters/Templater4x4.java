@@ -3,6 +3,7 @@ package org.bakasoft.framboyan.templaters;
 
 import java.util.ArrayList;
 
+import org.bakasoft.framboyan.exceptions.MissingTestException;
 import org.bakasoft.framboyan.templates.Template4;
 
 public class Templater4x4<T1, T2, T3, T4, U1, U2, U3, U4> {
@@ -32,7 +33,7 @@ public class Templater4x4<T1, T2, T3, T4, U1, U2, U3, U4> {
 
 		public Batch test(U1 arg1, U2 arg2, U3 arg3, U4 arg4) {
 			if (templates.isEmpty()) {
-				throw new RuntimeException();
+				throw new MissingTestException();
 			}
 
 			for (Template4<U1, U2, U3, U4> template : templates) {

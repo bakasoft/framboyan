@@ -2,9 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c72c4017-9975-4534-9d10-65c8f1093b66" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/org.bakasoft.framboyan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/org.bakasoft.framboyan.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/CreatingInstanceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingTestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templaters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingConstructorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingConstructorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Suite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareGenericDiff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareGenericDiff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/NotSupportedClassException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/NotSupportedClassException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/autogen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/autogen.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Reflection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Reflection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Resources.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/default/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,25 +154,39 @@
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/StartWithStringDiff.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/MatchDiff.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/SimilarDiff.json" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Suite.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/util/StringsTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingEmptyConstructorException.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/StartWithDiff.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/NotSupportedClassException.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareDiff.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/ContainDiff.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/EndWithDiff.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Strings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Reflection.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Normalizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingConstructorException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x3Builder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x3.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x4.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/generate_templaters.sh" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Suite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templaters.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/NotSupportedClassException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Resources.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingTestException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x5.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/autogen.sh" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Reflection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/CreatingInstanceException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareGenericDiff.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Node.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="838" />
     <option name="y" value="22" />
-    <option name="width" value="1676" />
+    <option name="width" value="838" />
     <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -191,7 +239,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="framboyan" type="462c0819:PsiDirectoryNode" />
-              <item name="templaters" type="462c0819:PsiDirectoryNode" />
+              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="framboyan" type="b2602c69:ProjectViewProjectNode" />
@@ -200,7 +248,28 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="framboyan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="templaters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="framboyan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.bakasoft.framboyan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="framboyan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.bakasoft.framboyan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="framboyan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="org.bakasoft.framboyan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="framboyan" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -211,7 +280,12 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.bakasoft.framboyan.templaters" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -313,32 +387,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1676" height="1028" extended-state="0" />
+    <frame x="0" y="22" width="1622" height="1028" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.24118942" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32929516" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32929516" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.41740087" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32929516" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32929516" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32929516" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22031824" />
-      <window_info anchor="bottom" id="Analysis" order="8" weight="0.32929516" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.31497797" />
-      <window_info anchor="right" id="Gradle" order="3" weight="0.32995567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21518987" />
+      <window_info anchor="bottom" id="Analysis" order="11" weight="0.32929516" />
+      <window_info anchor="bottom" id="Build" order="10" weight="0.31497797" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32929516" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.32974684" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39977974" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32929516" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31938326" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32929516" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32929516" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -359,324 +433,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/ContainStringDiff.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="9" selection-start-line="2" selection-start-column="14" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/StartWithListDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/StartWithStringDiff.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/StartWithStringDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/SameClassDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/console/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/SimilarDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/expect/NotExpect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/MatchDiff.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/SimilarDiff.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/DiffTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/JSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="27" column="67" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Inspector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="103" column="11" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templates/Template2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/plainText/PlainTextConsoleRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/expect/Expect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="140" column="48" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CloseToDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="37" column="103" selection-start-line="37" selection-start-column="103" selection-end-line="37" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareGenericDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/ContainListDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/ContainStringDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/SpecTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/RunTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Suite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="152" column="20" selection-start-line="152" selection-start-column="7" selection-end-line="152" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/GroupTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/console/ConsoleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-826">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/expect/ExpectTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/util/InspectorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/util/JsonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/util/NormalizerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/util/ReflectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/SuiteTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/TestTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="10" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/NodeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/RunnerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/StartWithDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/EndWithDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Strings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="55" lean-forward="true" selection-start-line="7" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/NotSupportedClassException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Normalizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="270" column="4" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Reflection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="130" column="39" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Action.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/framboyan.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/ContainDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/WrappedDiff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/MatchDiff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -688,13 +444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingConstructorException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -711,6 +460,331 @@
           <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templates/Template1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templates/Template2Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x3Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/asdf.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templates/Template2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templates/Template1Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Template4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x2Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x4Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater3x4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater0x4Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater0x4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater2x2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x5Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x1Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x2Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x3Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Suite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1452">
+          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x2Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater1x1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Mode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/NotSupportedClassException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/CloseToDiff.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/bakasoft/framboyan/diff/DiffTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingConstructorException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/MissingTestException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/autogen.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x1Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater4x3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templater5x4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/templaters/Templaters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="89" column="101" selection-start-line="89" selection-start-column="101" selection-end-line="89" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
+          <folding>
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1014#1015#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/exceptions/CreatingInstanceException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="46" />
+          <folding>
+            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/src.zip!/java/lang/RuntimeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="94" column="11" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="27" />
+          <folding>
+            <element signature="e#3078#3079#0" expanded="true" />
+            <element signature="e#3106#3107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/util/Reflection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="141" column="36" lean-forward="true" selection-start-line="141" selection-start-column="36" selection-end-line="141" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/diff/CompareGenericDiff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="73" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bakasoft/framboyan/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framboyan.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

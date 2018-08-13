@@ -19,11 +19,11 @@ public class NotSupportedClassException extends RuntimeException {
             if (notSupportedType != null) {
                 return String.format("Class %s is not supported, it must be assignable to %s.",
                         notSupportedType.getName(),
-                        expectedTypes);
+                        expectedTypes.toString());
             }
 
             return String.format("Expected a class assignable to %s.",
-                    expectedTypes);
+                    expectedTypes.toString());
         }
         else if (notSupportedType != null) {
             return String.format("Class %s is not supported.",
