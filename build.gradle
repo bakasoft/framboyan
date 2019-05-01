@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+group 'org.bakasoft'
+version '2.0.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
+task test(type: JavaExec, description: 'Runs tests.', overwrite:true) {
+    classpath sourceSets.test.runtimeClasspath
+    main = "org.bakasoft.framboyan.RunTests"
+}

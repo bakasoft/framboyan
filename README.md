@@ -1,178 +1,147 @@
 # Framboyan
 
-Framboyan is a test framework for Java inspired in `jasmine`, `mocha` or `rspec` and focused in simplicity, developer experience and following ideals:
+Framboyan is a test framework for Java focused in simplicity, developer experience and following ideals:
 
 - Writing and running tests should be simple and straightforward.
 - Debugging messages should be clear and descriptive.
-- The framework dependencies should tend to zero.
+- The framework dependencies should be zero.
 
 # Example
 
-**ExampleTest.java**
+**example/Example.java**
 
 ```java
-package org.bakasoft.framboyan.test;
+package example;
+
+import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.util.consumers.C4;
+import org.bakasoft.framboyan.util.functions.F2;
 
 import java.net.URI;
-import java.net.URL;
 
-import org.bakasoft.framboyan.Framboyan;
+public class Example extends FramboyanTest {{
+  pass("`create(String)` method", () -> {
+    pass("should accept valid URIs", () -> {
+      URI.create("http://www.github.com/bakasoft");
+    });
+    fail("should throw an error with invalid URIs", IllegalArgumentException.class, () -> {
+      URI.create("file://");
+    });
+  });
+  pass("`toASCIIString()` method", () -> {
+    xpass("should return the URI as a US-ASCII string"); // this test is not implemented
+  });
+  pass("should resolve URIs", () -> { // this test is failing
+    F2<String, String> f = (absolute, relative) ->
+        URI.create(absolute).resolve(relative).toString();
+    //             Absolute                 Relative           Result
+    expect(f.apply("file://Users"         , "."     )).toEqual("file://Users");
+    expect(f.apply("file://Users/bakasoft", "folder")).toEqual("file://Users/bakasoft/folder");
+  });
+  pass("should identify the main components", () -> {
+    C4<String, String, String, String> c = (input, scheme, authority, path) -> {
+      URI uri = URI.create(input);
 
-public class ExampleTest extends Framboyan {{
-
-	describe(URI.class, () -> {
-		describe("`create(String)` method", () -> {
-			it("should pass with valid URIs", () -> {
-				URI.create("http://www.github.com/bakasoft");
-			});
-			it("should throw an error with invalid URIs", () -> {
-				expect(() -> {
-					URI.create("file://");
-				}).toThrow(IllegalArgumentException.class);
-			});
-		});
-		
-		describe("`toASCIIString()` method", () -> {
-			xit("should return the URI as a US-ASCII string"); // TODO: add spec
-		});
-		
-		it("should resolve URIs", () -> { // TODO: fix this test
-			template((String absolute, String relative, String result) -> {
-				console.log("Resolving '%s' using '%s'...", relative, absolute);
-				
-				URI uri = URI.create(absolute);
-				
-				expect(uri.resolve(relative).toString()).toBe(result);
-			})
-			//     Absolute                Relative   Result
-			.test("file://Users"         , "."      , "file://Users")
-			.test("file://Users/bakasoft", "folder" , "file://Users/bakasoft/folder")
-			;
-		});
-		
-		it("should identify the main components", () -> {
-			template((String input, String scheme, String authority, String path) -> {
-				console.log("Creating URI: ", input);
-				
-				URI uri = URI.create(input);
-				
-				expect(uri.getScheme()).toBe(scheme);
-				expect(uri.getAuthority()).toBe(authority);
-				expect(uri.getPath()).toBe(path);
-			})
-			//     URI                                  Scheme   Authority             Path
-			.test("http://github.com/bakasoft"        , "http" , "github.com"        , "/bakasoft")
-			.test("https://bakasoft.github.io/gramat/", "https", "bakasoft.github.io", "/gramat/")
-			;
-		});
-	});
-	
-	xdescribe(URL.class, () -> { // TODO: fix URL tests
-		describe("(String) constructor", () -> {
-			it("should pass with valid URLs", () -> {
-				new URL("");
-			});
-		});
-	});
-	
+      expect(uri.getScheme()).toEqual(scheme);
+      expect(uri.getAuthority()).toEqual(authority);
+      expect(uri.getPath()).toEqual(path);
+    };
+    //       URI                                   Scheme   Authority             Path
+    c.accept("http://github.com/bakasoft"        , "http" , "github.com"        , "/bakasoft");
+    c.accept("https://bakasoft.github.io/gramat/", "https", "bakasoft.github.io", "/gramat/");
+  });
 }}
 ```
 
-**Main.java**
+**example/RunExample.java**
 
 ```java
-import org.bakasoft.framboyan.Framboyan;
+package example;
 
-public class Main {
+import org.bakasoft.framboyan.test.Framboyan;
 
+public class RunExample {
   public static void main(String[] args) {
-    Framboyan.run();
+    // Run all tests found in `example` package
+    Framboyan.run("example");
   }
-
 }
 ```
 
 **Output:**
 
 ```
-class java.net.URI `create(String)` method ⚙️
-  should pass with valid URIs ✅
-  should throw an error with invalid URIs ✅
+example ⛔
+  Example ⛔
+    `create(String)` method ✅
+      should accept valid URIs ✅
+      should throw an error with invalid URIs ✅
+    `toASCIIString()` method ⛔
+      should return the URI as a US-ASCII string ⛔
+    should resolve URIs: Expected "file://Users/folder" to equal "file://Users/bakasoft/folder". ❌
+    should identify the main components ✅
 
-class java.net.URI ⚙️
-  should resolve URIs ❌
+should resolve URIs ❌
+  Expected "file://Users/folder" to equal "file://Users/bakasoft/folder".
+    org.bakasoft.framboyan.expect.ExpectError:
+      org.bakasoft.framboyan.expect.ExpectToEqual.pass(ExpectToEqual.java:8)
+      org.bakasoft.framboyan.expect.Expect.toEqual(Expect.java:37)
+      example.Example.lambda$new$5(Example.java:26)
+      org.bakasoft.framboyan.test.FramboyanTest.lambda$process_pass$0(FramboyanTest.java:66)
+      org.bakasoft.framboyan.test.FramboyanTest.process(FramboyanTest.java:51)
+      org.bakasoft.framboyan.test.FramboyanTest.process_pass(FramboyanTest.java:64)
+      org.bakasoft.framboyan.test.FramboyanTest.pass(FramboyanTest.java:141)
+      example.Example.<init>(Example.java:21)
+      sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+      sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+      sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+      java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+      org.bakasoft.framboyan.test.StandardRunner.run(StandardRunner.java:31)
+      org.bakasoft.framboyan.test.Framboyan.run(Framboyan.java:24)
+      example.RunExample.main(RunExample.java:7)
 
-Resolving '.' using 'file://Users'...
-Resolving 'folder' using 'file://Users/bakasoft'...
-
-- "file://Users/bakasoft/folder"
-+ "file://Users/folder"
-
-org.bakasoft.framboyan.diff.DiffError: Expected "file://Users/folder" to be "file://Users/bakasoft/folder".
-	at org.bakasoft.framboyan.diff.Diff.expect(Diff.java:30)
-	at org.bakasoft.framboyan.expect.Expect.toBe(Expect.java:43)
-	at org.bakasoft.framboyan.test.ExampleTest.lambda$7(ExampleTest.java:32)
-	at org.bakasoft.framboyan.templates.Template3.test(Template3.java:12)
-	at org.bakasoft.framboyan.test.ExampleTest.lambda$6(ExampleTest.java:36)
-	at org.bakasoft.framboyan.Node.run(Node.java:76)
-	at org.bakasoft.framboyan.Runner.run(Runner.java:66)
-	at org.bakasoft.framboyan.Runner.run(Runner.java:53)
-	at org.bakasoft.framboyan.FramboyanLoader.run(FramboyanLoader.java:32)
-	at org.bakasoft.framboyan.FramboyanLoader.run(FramboyanLoader.java:26)
-	at org.bakasoft.framboyan.test.Main.main(Main.java:8)
-
-  should identify the main components ✅
-
-class java.net.URL (String) constructor ⚙️
-  should pass with valid URLs ⚠️
-
-FAILED
-5 test(s), 3 passed, 1 pending, 1 failed ⚠️
+Some tests failed ❌
+  3 successful test(s)
+  1 pending test(s)
+  1 failed test(s)
 ```
 
 # Using it
 
-To use this framework using [JitPack](https://jitpack.io/), add following lines to your `build.gradle` file.
+To use this framework using [JitPack](https://jitpack.io/), merge following lines into your `build.gradle` file.
 
 ```
 repositories {
-	...
 	maven { url 'https://jitpack.io' }
 }
 
-...
-
 dependencies {
-	...
-	implementation 'com.github.bakasoft:framboyan:v1.1'
+	testCompile 'com.github.bakasoft:framboyan:2.0.0'
 }
 ```
 
-Or following lines to your `pom.xml` file:
+Or merge following lines into your `pom.xml` file:
 
 ```xml
-<repositories>
-	...
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-	...
-</repositories>
-<dependency>
-    <groupId>com.github.bakasoft</groupId>
-    <artifactId> framboyan </artifactId>
-    <version>v1.1</version>
-</dependency>
+<project>
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>com.github.bakasoft</groupId>
+      <artifactId>framboyan</artifactId>
+      <version>2.0.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
 ```
 
-# Build
-
-Starting from the repository root, go to the project directory:
-
-```sh
-cd ./org.bakasoft.framboyan
-```
+# Gradle Tasks
 
 Build library:
 
@@ -180,7 +149,13 @@ Build library:
 ./gradlew build
 ```
 
-Generate JAR in `./build/libs/framboyan-v1.1.jar`:
+Run tests:
+
+```sh
+./gradlew test
+```
+
+Generate JAR:
 
 ```sh
 ./gradlew jar
