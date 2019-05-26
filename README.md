@@ -19,7 +19,7 @@ import org.bakasoft.framboyan.util.functions.F2;
 
 import java.net.URI;
 
-public class Example extends FramboyanTest {{
+public class Example extends TestCase {{
   pass("`create(String)` method", () -> {
     pass("should accept valid URIs", () -> {
       URI.create("http://www.github.com/bakasoft");
@@ -58,12 +58,12 @@ public class Example extends FramboyanTest {{
 ```java
 package example;
 
-import org.bakasoft.framboyan.test.Framboyan;
+import org.bakasoft.framboyan.test.TestRunner;
 
 public class RunExample {
   public static void main(String[] args) {
     // Run all tests found in `example` package
-    Framboyan.run("example");
+    TestRunner.run("example");
   }
 }
 ```
@@ -116,7 +116,7 @@ repositories {
 }
 
 dependencies {
-	testCompile 'com.github.bakasoft:framboyan:2.0.0'
+	testCompile 'com.github.bakasoft:framboyan:2.1.0'
 }
 ```
 
@@ -134,7 +134,7 @@ Or merge following lines into your `pom.xml` file:
     <dependency>
       <groupId>com.github.bakasoft</groupId>
       <artifactId>framboyan</artifactId>
-      <version>2.0.0</version>
+      <version>2.1.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
