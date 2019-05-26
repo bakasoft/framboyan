@@ -34,22 +34,12 @@ public class Diff {
         if (Objects.equals(expected, actual)) {
             return null;
         }
-        else if (normalizedExpected instanceof String && normalizedActual instanceof String) {
-            return diffString((String)normalizedExpected, (String)normalizedActual);
-        }
         else if (normalizedExpected instanceof List && normalizedActual instanceof List) {
             return diffList((List<?>)normalizedExpected, (List<?>)normalizedActual);
         }
+        // TODO implement diff Collection don't taking into account the order
         else if (normalizedExpected instanceof Map && normalizedActual instanceof Map) {
             return diffMap((Map<?,?>)normalizedExpected, (Map<?,?>) normalizedActual);
-        }
-
-        return new DiffValue(expected, actual);
-    }
-
-    public DiffValue diffString(String expected, String actual) {
-        if (Objects.equals(expected, actual)) {
-            return null;
         }
 
         return new DiffValue(expected, actual);

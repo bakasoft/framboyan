@@ -1,6 +1,7 @@
 package org.bakasoft.framboyan.inspect;
 
 import org.bakasoft.framboyan.util.CodeWriter;
+import org.bakasoft.framboyan.util.Untyper;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -211,48 +212,7 @@ public class Inspector extends CodeWriter {
             write(NULL_MARK);
         }
         else if (inspected.add(instance)) {
-            Class<?> type = instance.getClass();
-
-            try {
-                BeanInfo beanInfo = Introspector.getBeanInfo(type, Object.class);
-                PropertyDescriptor[] properties = beanInfo.getPropertyDescriptors();
-
-                if (properties != null && properties.length > 0) {
-                    write('{');
-                    write("@id:");
-                    write(Integer.toHexString(instance.hashCode()));
-                    write(',');
-
-                    write("@type:");
-                    write(type.getSimpleName());
-
-                    for (PropertyDescriptor property : properties) {
-                        Method getter = property.getReadMethod();
-                        if (getter != null && getter.getParameterCount() == 0) {
-                            String key = property.getName();
-                            write(',');
-                            writeString(key, STRING_DELIMITER);
-                            write(':');
-                            try {
-                                Object value = getter.invoke(instance);
-
-                                writeAny(value);
-                            }
-                            catch (Exception e) {
-                                write('!');
-                                writeString(e.getMessage() != null
-                                    ? e.getMessage() : e.getClass().getSimpleName(), '<', '>');
-                            }
-                        }
-                    }
-                    write('}');
-                }
-                else {
-                    write(instance.toString());
-                }
-            } catch (IntrospectionException e) {
-                write(instance.toString());
-            }
+            writeAny(Untyper.untype(instance));
         }
         else {
             write(RECURSION_MARK);

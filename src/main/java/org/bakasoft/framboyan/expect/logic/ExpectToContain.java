@@ -1,4 +1,7 @@
-package org.bakasoft.framboyan.expect;
+package org.bakasoft.framboyan.expect.logic;
+
+import org.bakasoft.framboyan.expect.ExpectError;
+import org.bakasoft.framboyan.expect.ExpectUtil;
 
 import java.util.List;
 import java.util.function.Consumer;

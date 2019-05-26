@@ -1,10 +1,10 @@
 package org.bakasoft.framboyan.util;
 
-import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.test.TestCase;
 
 import java.io.StringWriter;
 
-public class Caster_toString extends FramboyanTest {{
+public class Caster_toString extends TestCase {{
   pass("String objects shouldn't be touched", () -> {
     String str = "This is a String";
 

@@ -1,11 +1,11 @@
 package org.bakasoft.framboyan.util;
 
-import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.test.TestCase;
 
 import java.util.*;
 import java.util.stream.Stream;
 
-public class Caster_toList extends FramboyanTest {{
+public class Caster_toList extends TestCase {{
 
   pass("Instances of List shouldn't be touched", () -> {
     ArrayList<String> list1 = new ArrayList<>();

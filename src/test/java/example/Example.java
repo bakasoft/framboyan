@@ -1,12 +1,12 @@
 package example;
 
-import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.test.TestCase;
 import org.bakasoft.framboyan.util.consumers.C4;
 import org.bakasoft.framboyan.util.functions.F2;
 
 import java.net.URI;
 
-public class Example extends FramboyanTest {{
+public class Example extends TestCase {{
   pass("`create(String)` method", () -> {
     pass("should accept valid URIs", () -> {
       URI.create("http://www.github.com/bakasoft");

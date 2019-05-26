@@ -13,7 +13,7 @@ Framboyan is a test framework for Java focused in simplicity, developer experien
 ```java
 package example;
 
-import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.test.TestCase;
 import org.bakasoft.framboyan.util.consumers.C4;
 import org.bakasoft.framboyan.util.functions.F2;
 
@@ -87,10 +87,10 @@ should resolve URIs ❌
       org.bakasoft.framboyan.expect.ExpectToEqual.pass(ExpectToEqual.java:8)
       org.bakasoft.framboyan.expect.Expect.toEqual(Expect.java:37)
       example.Example.lambda$new$5(Example.java:26)
-      org.bakasoft.framboyan.test.FramboyanTest.lambda$process_pass$0(FramboyanTest.java:66)
-      org.bakasoft.framboyan.test.FramboyanTest.process(FramboyanTest.java:51)
-      org.bakasoft.framboyan.test.FramboyanTest.process_pass(FramboyanTest.java:64)
-      org.bakasoft.framboyan.test.FramboyanTest.pass(FramboyanTest.java:141)
+      org.bakasoft.framboyan.test.TestCase.lambda$process_pass$0(FramboyanTest.java:66)
+      org.bakasoft.framboyan.test.TestCase.process(FramboyanTest.java:51)
+      org.bakasoft.framboyan.test.TestCase.process_pass(FramboyanTest.java:64)
+      org.bakasoft.framboyan.test.TestCase.pass(FramboyanTest.java:141)
       example.Example.<init>(Example.java:21)
       sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
       sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)

@@ -1,6 +1,6 @@
 package org.bakasoft.framboyan.test;
 
-public class TestResult_constructor extends FramboyanTest {{
+public class TestResult_constructor extends TestCase {{
   pass("should generate description from class argument", () -> {
     class CustomTest_1 {}
 

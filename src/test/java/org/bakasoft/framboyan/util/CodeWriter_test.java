@@ -1,10 +1,10 @@
 package org.bakasoft.framboyan.util;
 
-import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.test.TestCase;
 
 import java.io.IOException;
 
-public class CodeWriter_test extends FramboyanTest {{
+public class CodeWriter_test extends TestCase {{
 
   pass("Check default values", () -> {
     CodeWriter writer = new CodeWriter(new StringBuilder());

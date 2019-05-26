@@ -1,5 +1,7 @@
-package org.bakasoft.framboyan.expect;
+package org.bakasoft.framboyan.expect.logic;
 
+import org.bakasoft.framboyan.expect.ExpectError;
+import org.bakasoft.framboyan.expect.ExpectUtil;
 import org.bakasoft.framboyan.util.Caster;
 
 import java.util.Arrays;

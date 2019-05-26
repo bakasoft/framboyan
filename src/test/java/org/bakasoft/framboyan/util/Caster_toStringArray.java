@@ -1,8 +1,8 @@
 package org.bakasoft.framboyan.util;
 
-import org.bakasoft.framboyan.test.FramboyanTest;
+import org.bakasoft.framboyan.test.TestCase;
 
-public class Caster_toStringArray extends FramboyanTest {{
+public class Caster_toStringArray extends TestCase {{
 
   pass("Null values shouldn't be touched", () -> {
     expect(Caster.toStringArray(null))

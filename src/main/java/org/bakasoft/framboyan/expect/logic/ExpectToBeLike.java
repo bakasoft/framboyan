@@ -1,11 +1,13 @@
-package org.bakasoft.framboyan.expect;
+package org.bakasoft.framboyan.expect.logic;
 
 import org.bakasoft.framboyan.diff.Diff;
 import org.bakasoft.framboyan.diff.DiffItem;
+import org.bakasoft.framboyan.expect.ExpectError;
+import org.bakasoft.framboyan.util.Untyper;
 
 public class ExpectToBeLike {
   public static DiffItem diff(Object actual, Object expected) {
-    Diff diff = new Diff();
+    Diff diff = new Diff(new Untyper());
 
     return diff.diff(expected, actual);
   }

@@ -2,6 +2,7 @@ package org.bakasoft.framboyan.util;
 
 import java.io.StringWriter;
 import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.BaseStream;
 import java.util.stream.Collectors;
@@ -52,6 +53,9 @@ public class Caster {
     }
     else if (value instanceof CharSequence || value instanceof StringWriter) {
       return value.toString();
+    }
+    else if (value instanceof Type) {
+      return ((Type)value).getTypeName();
     }
 
     return null;

@@ -1,22 +1,17 @@
 plugins {
     id 'java'
-    id 'java-library'
 }
 
 group 'org.bakasoft'
-version '2.0.0'
+version '2.1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-jar {
-    manifest {
-        attributes('Implementation-Title': project.name,
-                'Implementation-Version': project.version)
-    }
+repositories {
+    maven { url 'https://jitpack.io' }
 }
 
-task test(type: JavaExec, description: 'Runs tests.', overwrite:true) {
-    classpath sourceSets.test.runtimeClasspath
-    main = "org.bakasoft.framboyan.RunTests"
+dependencies {
+    compile 'com.github.bakasoft:beat:0.1.0'
 }

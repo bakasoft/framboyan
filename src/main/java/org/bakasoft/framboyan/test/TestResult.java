@@ -1,5 +1,7 @@
 package org.bakasoft.framboyan.test;
 
+import org.bakasoft.framboyan.test.annotations.Test;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +20,14 @@ public class TestResult {
   private boolean focused;
 
   public TestResult(Class<?> type) {
-    this.description = type.getSimpleName().replace('_', ' ');
+    Test t = type.getAnnotation(Test.class);
+
+    if (t != null && !t.value().isEmpty()) {
+      this.description = t.value();
+    }
+    else {
+      this.description = type.getSimpleName().replace('_', ' ');
+    }
   }
 
   public TestResult(String description) {

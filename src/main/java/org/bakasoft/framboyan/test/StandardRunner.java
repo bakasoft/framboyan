@@ -1,5 +1,6 @@
 package org.bakasoft.framboyan.test;
 
+import org.bakasoft.framboyan.test.annotations.Test;
 import org.bakasoft.framboyan.util.CodeWriter;
 
 import java.lang.reflect.Array;
@@ -27,27 +28,34 @@ public class StandardRunner {
     TestResult suite = new TestResult(suiteName);
 
     for (Class<?> testType : testTypes) {
-      try {
-        Object testInstance = testType.getConstructor().newInstance();
-        TestResult result;
+      Test t = testType.getAnnotation(Test.class);
 
-        if (testInstance instanceof Testable) {
-          result = ((Testable)testInstance).getResult();
-        }
-        else {
-          result = new TestResult(testType);
-        }
-
-        result.pass();
+      if (t != null && t.ignore()) {
+        TestResult result = new TestResult(testType);
 
         suite.addTest(result);
       }
-      catch (Exception | AssertionError e) {
-        TestResult result = new TestResult(testType);
+      else {
+        try {
+          Object testInstance = testType.getConstructor().newInstance();
+          TestResult result;
 
-        result.fail(e);
+          if (testInstance instanceof Testable) {
+            result = ((Testable) testInstance).getResult();
+          } else {
+            result = new TestResult(testType);
+          }
 
-        suite.addTest(result);
+          result.pass();
+
+          suite.addTest(result);
+        } catch (Exception | AssertionError e) {
+          TestResult result = new TestResult(testType);
+
+          result.fail(e);
+
+          suite.addTest(result);
+        }
       }
     }
 

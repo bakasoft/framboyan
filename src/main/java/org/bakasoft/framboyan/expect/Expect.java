@@ -1,134 +1,92 @@
 package org.bakasoft.framboyan.expect;
 
+import org.bakasoft.framboyan.expect.logic.*;
+
 public class Expect {
 
   private final Object actual;
-  private final boolean positive;
-
-  public final Expect not;
+  public final ExpectNot not;
 
   public Expect(Object actual) {
-    this(actual, null);
-  }
-
-  private Expect(Object actual, Expect not) {
     this.actual = actual;
-    if (not != null) {
-      this.not = not;
-      this.positive = false;
-    }
-    else {
-      this.not = new Expect(actual, this);
-      this.positive = true;
-    }
+    this.not = new ExpectNot(actual);
   }
 
-  public void toBe(Object expected) {
-    if (positive) {
-      ExpectToBe.pass(actual, expected);
-    }
-    else {
-      ExpectToBe.fail(actual, expected);
-    }
+  public <T> T cast(Class<T> type) {
+    return ExpectCast.pass(actual, type);
   }
 
-  public void toEqual(Object expected) {
-    if (positive) {
-      ExpectToEqual.pass(actual, expected);
-    }
-    else {
-      ExpectToEqual.fail(actual, expected);
-    }
+  public Object get(String key) {
+    return ExpectGet.pass(actual, key, Object.class);
   }
 
-  public void toBeLike(Object expected) {
-    if (positive) {
-      ExpectToBeLike.pass(actual, expected);
-    }
-    else {
-      ExpectToBeLike.fail(actual, expected);
-    }
+  public <T> T get(Object key, Class<T> type) {
+    return ExpectGet.pass(actual, key, type);
   }
 
-  public void toBeEmpty() {
-    if (positive) {
-      ExpectToBeEmpty.pass(actual);
-    }
-    else {
-      ExpectToBeEmpty.fail(actual);
-    }
+  public Expect toBe(Object expected) {
+    ExpectToBe.pass(actual, expected);
+    return this;
   }
 
-  public void toBeTrue() {
-    if (positive) {
-      ExpectToBeBoolean.shouldBeTrue(actual);
-    }
-    else {
-      ExpectToBeBoolean.shouldBeFalse(actual);
-    }
+  public Expect toEqual(Object expected) {
+    ExpectToEqual.pass(actual, expected);
+    return this;
   }
 
-  public void toBeFalse() {
-    if (positive) {
-      ExpectToBeBoolean.shouldBeFalse(actual);
-    }
-    else {
-      ExpectToBeBoolean.shouldBeTrue(actual);
-    }
+  public Expect toBeLike(Object expected) {
+    ExpectToBeLike.pass(actual, expected);
+    return this;
   }
 
-  public void toBeNull() {
-    if (positive) {
-      ExpectToBeNull.pass(actual);
-    }
-    else {
-      ExpectToBeNull.fail(actual);
-    }
+  public Expect toBeEmpty() {
+    ExpectToBeEmpty.pass(actual);
+    return this;
   }
 
-  public void toStartWith(Object... items) {
-    if (positive) {
-      ExpectToStartWith.pass(actual, items);
-    }
-    else {
-      ExpectToStartWith.fail(actual, items);
-    }
+  public Expect toBeTrue() {
+    ExpectToBeBoolean.shouldBeTrue(actual);
+    return this;
   }
 
-  public void toEndWith(Object... items) {
-    if (positive) {
-      ExpectToEndWith.pass(actual, items);
-    }
-    else {
-      ExpectToEndWith.fail(actual, items);
-    }
+  public Expect toBeFalse() {
+    ExpectToBeBoolean.shouldBeFalse(actual);
+    return this;
   }
 
-  public void toMatch(Object pattern) {
-    if (positive) {
-      ExpectToMatch.pass(actual, pattern);
-    }
-    else {
-      ExpectToMatch.fail(actual, pattern);
-    }
+  public Expect toBeNull() {
+    ExpectToBeNull.pass(actual);
+    return this;
   }
 
-  public void toContain(Object... expected) {
-    if (positive) {
-      ExpectToContain.pass(actual, expected);
-    }
-    else  {
-      ExpectToContain.fail(actual, expected);
-    }
+  public Expect toStartWith(Object... items) {
+    ExpectToStartWith.pass(actual, items);
+    return this;
   }
 
-  public void toIterate(Object... expected) {
-    if (positive) {
-      ExpectToIterate.pass(actual, expected);
-    }
-    else  {
-      ExpectToIterate.fail(actual, expected);
-    }
+  public Expect toEndWith(Object... items) {
+    ExpectToEndWith.pass(actual, items);
+    return this;
+  }
+
+  public Expect toMatch(Object pattern) {
+    ExpectToMatch.pass(actual, pattern);
+    return this;
+  }
+
+  public Expect toContain(Object... expected) {
+    ExpectToContain.pass(actual, expected);
+    return this;
+  }
+
+  public Expect toIterate(Object... expected) {
+    ExpectToIterate.pass(actual, expected);
+    return this;
+  }
+
+  public Expect toBeInstanceOf(Class<?> type) {
+    ExpectToBeInstanceOf.pass(actual, type);
+    return this;
   }
 
 }
