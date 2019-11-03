@@ -2,16 +2,12 @@ plugins {
     id 'java'
 }
 
-group 'org.bakasoft'
-version '2.1.0'
+group 'bakasoft'
+version '2.1.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-
 dependencies {
-    compile 'com.github.bakasoft:beat:0.1.0'
+    compile 'bakasoft:beat:0.1.1'
 }

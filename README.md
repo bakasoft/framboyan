@@ -108,38 +108,7 @@ Some tests failed ❌
 
 # Using it
 
-To use this framework using [JitPack](https://jitpack.io/), merge following lines into your `build.gradle` file.
-
-```
-repositories {
-	maven { url 'https://jitpack.io' }
-}
-
-dependencies {
-	testCompile 'com.github.bakasoft:framboyan:2.1.0'
-}
-```
-
-Or merge following lines into your `pom.xml` file:
-
-```xml
-<project>
-  <repositories>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-  </repositories>
-  <dependencies>
-    <dependency>
-      <groupId>com.github.bakasoft</groupId>
-      <artifactId>framboyan</artifactId>
-      <version>2.1.0</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-</project>
-```
+[See Source Dependencies](https://blog.gradle.org/introducing-source-dependencies)
 
 # Gradle Tasks
 
